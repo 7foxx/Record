@@ -9,12 +9,12 @@ export default defineUserConfig({
     // 默认主题配置
     navbar: [
       {
-        text: '笔记',
-        link: '/page/web/'
+        text: '记录',
+        link: '/page/record/JavaScript'
       },
       {
         text: '问题',
-        link: '/page/intro/'
+        link: '/page/TheProblem/'
       }
     ],
     sidebar: Sidebar()
