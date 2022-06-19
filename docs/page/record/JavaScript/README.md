@@ -11,5 +11,3 @@ export default defineClientConfig({
   rootComponents: []
 })
 ```
-
-## 222

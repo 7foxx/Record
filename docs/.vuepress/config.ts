@@ -14,7 +14,7 @@ export default defineUserConfig({
       },
       {
         text: '问题',
-        link: '/page/TheProblem/'
+        link: '/page/TheProblem/The'
       }
     ],
     sidebar: Sidebar()
