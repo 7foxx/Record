@@ -1,6 +1,6 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import Sidebar from './fileData'
-const { copyCode } = require('vuepress-plugin-copy-code2')
+const { copyCodePlugin } = require('vuepress-plugin-copy-code2')
 export default defineUserConfig({
   lang: 'zh-CN',
   title: '你好， VuePress ！',
@@ -21,25 +21,14 @@ export default defineUserConfig({
   }),
   plugins: [
     // https://vuepress-theme-hope.github.io/v2/copy-code/zh/
-    copyCode({
+    copyCodePlugin({
       // 插件选项
-      pure: true
+      pure: true,
+      duration: 2000
     }),
+    // 要申请以后在搞
     [
-      '@vuepress/plugin-external-link-icon',
-      {
-        locales: {
-          '/': {
-            openInNewWindow: 'open in new window'
-          },
-          '/zh/': {
-            openInNewWindow: '在新窗口打开'
-          }
-        }
-      }
-    ],
-    [
-      '@vuepress/plugin-search',
+      '@vuepress/search',
       {
         locales: {
           '/': {

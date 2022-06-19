@@ -10,7 +10,7 @@
 
 `TypeScript` 官网对`JSX`的介绍
 
-https://www.tslang.cn/docs/handbook/jsx.html
+<https://www.tslang.cn/docs/handbook/jsx.html>
 
 **解决一**
 
@@ -28,6 +28,6 @@ declare namespace JSX {
 
 简单粗暴
 
-```json
+```sh
 yarn add @types/react
 ```
