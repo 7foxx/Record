@@ -62,5 +62,16 @@ export default function getJsonFiles() {
       }
     }
   })
+  for (const key in obj) {
+    const item = obj[key]
+    item.map(v => {
+      if (v.children?.length) {
+        const val = v.children.find(e => /README/gi.test(e))
+        const arr = v.children.filter(e => !/README/gi.test(e))
+        arr.unshift(val)
+        v.children = arr
+      }
+    })
+  }
   return obj
 }
