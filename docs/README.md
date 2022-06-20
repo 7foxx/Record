@@ -3,11 +3,11 @@ home: true
 title: 首页
 heroImage: /logo.svg
 actions:
-  - text: 课程介绍
-    link: /intro/
+  - text: 记录
+    link: /page/record/JavaScript
     type: secondary
-  - text: 基础 →
-    link: /base/
+  - text: 奇奇怪怪 →
+    link: '/page/TheProblem/The'
     type: primary
 features:
   - title: 💡 最新最热的技术

@@ -1,6 +1,7 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import Sidebar from './fileData'
 const { copyCodePlugin } = require('vuepress-plugin-copy-code2')
+const { searchPlugin } = require('@vuepress/plugin-search')
 export default defineUserConfig({
   lang: 'zh-CN',
   title: '你好， VuePress ！',
@@ -13,32 +14,36 @@ export default defineUserConfig({
         link: '/page/record/JavaScript'
       },
       {
-        text: '问题',
+        text: '奇奇怪怪',
         link: '/page/TheProblem/The'
+      },
+      {
+        text: 'Github',
+        link: 'https://github.com/7foxx/Record'
       }
     ],
     sidebar: Sidebar()
   }),
   plugins: [
+    // 代码复制
     // https://vuepress-theme-hope.github.io/v2/copy-code/zh/
     copyCodePlugin({
       // 插件选项
       pure: true,
       duration: 2000
     }),
-    // 要申请以后在搞
-    [
-      '@vuepress/search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search'
-          },
-          '/zh/': {
-            placeholder: '搜索'
-          }
-        }
-      }
-    ]
+    // 搜索
+    // https://v2.vuepress.vuejs.org/zh/reference/plugin/search.html#hotkeys
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
+        },
+      },
+      maxSuggestions: 10,
+    }),
   ]
 })

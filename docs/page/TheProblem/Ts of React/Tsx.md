@@ -1,6 +1,6 @@
-# 在 `tsx` 文件中写 `jsx` 类型检测会不通过
+# 在 `tsx` 文件中写 `jsx` 语法类型检测会不通过
 
-![image-20220618173422200](The problem.assets/image-20220618173422200.png)
+![image-20220618173422200](https://picgo-1302703244.cos.ap-nanjing.myqcloud.com/202206201015367.png)
 
 **原因：**
 
@@ -8,7 +8,7 @@
 
 **解决：**
 
-`TypeScript` 官网对`JSX`的介绍
+`TypeScript` 官网对 `JSX` 的介绍
 
 <https://www.tslang.cn/docs/handbook/jsx.html>
 
