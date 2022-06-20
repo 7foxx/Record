@@ -4,7 +4,9 @@
 
 **原因：**
 
-是和 TS 中泛型、类型的写法冲突了，把 <> 里面的当做了类型所以才会报错
+在自己搭建的 `Webpack` 中 如果没有配置 `JSX.IntrinsicElements` 接口是无法使用的
+
+如果是在 `Vue` 或 `React ` 的脚手架搭建的项目他会自动配置好的所以不会报错
 
 **解决：**
 
@@ -12,11 +14,12 @@
 
 <https://www.tslang.cn/docs/handbook/jsx.html>
 
-**解决一**
+**方案一**
 
-在 `.ts / .tsx / .d.ts` 中定义
+在 `.d.ts` 中定义
 
 ```ts
+// 声明（含有子属性的）全局对象
 declare namespace JSX {
   interface IntrinsicElements {
     [elemName: string]: any
@@ -24,7 +27,7 @@ declare namespace JSX {
 }
 ```
 
-**解决二**
+**方案二**
 
 简单粗暴
 
