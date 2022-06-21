@@ -4,25 +4,27 @@ const { copyCodePlugin } = require('vuepress-plugin-copy-code2')
 const { searchPlugin } = require('@vuepress/plugin-search')
 export default defineUserConfig({
   lang: 'zh-CN',
-  title: '你好， VuePress ！',
-  description: '这是我的第一个 VuePress 站点',
+  title: '你好， 打工人 ！',
+  port:8082,
+  // description: '这是我的第一个 VuePress 站点',
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
       {
+        text: '笔记',
+        link: '/page/record/A-Preface'
+      },
+      {
         text: '记录',
-        link: '/page/record/JavaScript'
+        link: '/page/TheProblem/A-Preface'
       },
       {
-        text: '奇奇怪怪',
-        link: '/page/TheProblem/The'
+        text: '面试题',
+        link: '/page/TheInterview/A-Preface'
       },
-      {
-        text: 'Github',
-        link: 'https://github.com/7foxx/Record'
-      }
     ],
-    sidebar: Sidebar()
+    sidebar: Sidebar(),
+    repo:"https://github.com/7foxx/Record'"
   }),
   plugins: [
     // 代码复制

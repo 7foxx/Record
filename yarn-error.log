@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\gaolingfeng\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js remove markdown-it-image-lazy-loading
+  C:\Program Files\nodejs\node.exe C:\Users\gaolingfeng\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js remove @vuepress/plugin-prismjs
 
 PATH: 
   C:\Program Files\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\TortoiseSVN\bin;C:\Users\gaolingfeng\AppData\Local\Microsoft\WindowsApps;C:\Users\gaolingfeng\AppData\Roaming\npm;C:\Users\gaolingfeng\AppData\Local\Programs\Git\cmd;C:\Users\gaolingfeng\AppData\Local\Programs\Microsoft VS Code\bin
@@ -34,8 +34,7 @@ npm manifest:
       "vite-plugin-watcher": "^0.1.0",
       "vuepress": "^2.0.0-beta.48",
       "vuepress-plugin-copy-code2": "^2.0.0-beta.84"
-    },
-    "dependencies": {}
+    }
   }
 
 yarn manifest: 
@@ -369,7 +368,7 @@ Lockfile:
       "@vuepress/utils" "2.0.0-beta.48"
       "chokidar" "^3.5.3"
   
-  "@vuepress/plugin-prismjs@2.0.0-beta.48":
+  "@vuepress/plugin-prismjs@^2.0.0-beta.48", "@vuepress/plugin-prismjs@2.0.0-beta.48":
     "integrity" "sha512-xTdk3DEJmzuzeRcm0fZfJFLs6/oN2T/sm+KtSh7whVbHcgEKFdj0vHkiWswp3bnNWE3FHUwO1UQq9K21zEwpUw=="
     "resolved" "https://registry.npmjs.org/@vuepress/plugin-prismjs/-/plugin-prismjs-2.0.0-beta.48.tgz"
     "version" "2.0.0-beta.48"
@@ -874,19 +873,12 @@ Lockfile:
     "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
     "version" "5.2.0"
   
-  "image-size@^1.0.0":
-    "integrity" "sha512-VAwkvNSNGClRw9mDHhc5Efax8PLlsOGcUTh0T/LIriC8vPA3U5PdqXWqkz406MoYHMKW8Uf9gWr05T/rYB44kQ=="
-    "resolved" "https://registry.npmjs.org/image-size/-/image-size-1.0.1.tgz"
-    "version" "1.0.1"
-    dependencies:
-      "queue" "6.0.2"
-  
   "immutable@^4.0.0":
     "integrity" "sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ=="
     "resolved" "https://registry.npmjs.org/immutable/-/immutable-4.1.0.tgz"
     "version" "4.1.0"
   
-  "inherits@^2.0.3", "inherits@^2.0.4", "inherits@~2.0.3":
+  "inherits@^2.0.3", "inherits@^2.0.4":
     "integrity" "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
     "resolved" "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz"
     "version" "2.0.4"
@@ -1005,13 +997,6 @@ Lockfile:
     "integrity" "sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ=="
     "resolved" "https://registry.npmjs.org/markdown-it-emoji/-/markdown-it-emoji-2.0.2.tgz"
     "version" "2.0.2"
-  
-  "markdown-it-image-lazy-loading@^1.2.0":
-    "integrity" "sha512-/aeNoa7DxCe3Ey01sF68shdj5JML+ixzr0adWAliwJZp0lpezl84iLCWybhcmCmSZgX0RcO7wGKzXMOI57RbKQ=="
-    "resolved" "https://registry.npmjs.org/markdown-it-image-lazy-loading/-/markdown-it-image-lazy-loading-1.2.0.tgz"
-    "version" "1.2.0"
-    dependencies:
-      "image-size" "^1.0.0"
   
   "markdown-it@*", "markdown-it@^13.0.1":
     "integrity" "sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q=="
@@ -1159,13 +1144,6 @@ Lockfile:
     "integrity" "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
     "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
     "version" "1.2.3"
-  
-  "queue@6.0.2":
-    "integrity" "sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA=="
-    "resolved" "https://registry.npmjs.org/queue/-/queue-6.0.2.tgz"
-    "version" "6.0.2"
-    dependencies:
-      "inherits" "~2.0.3"
   
   "readable-stream@^3.4.0":
     "integrity" "sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA=="

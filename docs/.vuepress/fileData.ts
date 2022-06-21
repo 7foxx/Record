@@ -73,5 +73,6 @@ export default function getJsonFiles() {
       }
     })
   }
+  // console.log(JSON.stringify(obj));
   return obj
 }
