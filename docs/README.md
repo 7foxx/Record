@@ -3,7 +3,7 @@ home: true
 title: 首页
 heroImage: /logo.svg
 actions:
-  - text: 记录
+  - text: Record
     link: /page/record/JavaScript
     type: secondary
   - text: 面试题 →
