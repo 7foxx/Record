@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "start": "vuepress dev docs --port 8082",
+    "build": "vuepress build docs --port 8082"
   },
   "keywords": [],
   "author": "",

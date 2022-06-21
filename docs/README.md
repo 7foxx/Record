@@ -6,8 +6,8 @@ actions:
   - text: 记录
     link: /page/record/JavaScript
     type: secondary
-  - text: 奇奇怪怪 →
-    link: '/page/TheProblem/The'
+  - text: 面试题 →
+    link: '/page/TheInterview/JavaScript'
     type: primary
 features:
   - title: 💡 最新最热的技术

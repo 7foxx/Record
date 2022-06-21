@@ -10,12 +10,16 @@ export default defineUserConfig({
     // 默认主题配置
     navbar: [
       {
-        text: '记录',
+        text: '笔记',
         link: '/page/record/JavaScript'
       },
       {
-        text: '奇奇怪怪',
+        text: '记录',
         link: '/page/TheProblem/The'
+      },
+      {
+        text: '面试题',
+        link: '/page/TheInterview/JavaScript'
       },
       {
         text: 'Github',
