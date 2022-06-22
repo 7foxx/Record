@@ -1,6 +1,57 @@
 const fs = require('fs')
 const pathDir = require('path')
 
+;(() => {
+  const arr: any = []
+  function fileFun(path) {
+    const files = fs.readdirSync(pathDir.resolve(__dirname, `../${path}`))
+    // console.log(files)
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i]
+      let fPath: string = pathDir.join(path, file)
+      let stat = fs.statSync(pathDir.resolve(__dirname, `../${fPath}`))
+      if (stat.isDirectory()) {
+        let flag = true
+        arr.map(item => {
+          if (item[path]) {
+            item[path].push(fPath)
+            flag = false
+          }
+        })
+        if (flag) {
+          arr.push({
+            [path]: [fPath]
+          })
+        }
+        fileFun(fPath)
+      }
+    }
+  }
+  fileFun('page')
+  arr.shift()
+
+  let newArr = []
+  for (let i = 0; i < arr.length; i++) {
+    const ele = arr[i]
+    const key = Object.keys(ele)[0]
+    for (let j = 0; j < arr.length; j++) {
+      const elem = arr[j]
+      const arras = Object.values(elem)[0] as any
+      if ([...arras].includes(key)) {
+        const index = arras.findIndex(e => e === key)
+        const objK = Object.keys(elem)[0]
+        elem[objK][index] = ele
+        newArr = arr.filter(v => !v[key])
+      }
+    }
+  }
+  // console.log(JSON.stringify(newArr));
+  // console.log(newArr);
+  
+})()
+
+throw 1
+
 // 自动读取文件添加路由
 export default function getJsonFiles() {
   const fileArr: any = []
