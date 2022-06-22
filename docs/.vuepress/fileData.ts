@@ -34,6 +34,7 @@ export default function getJsonFiles() {
       }
     })
   }
+  // 从 page 文件夹开始
   fileFun('page')
   const obj = {}
   const newFileArr = fileArr.filter(item => {
