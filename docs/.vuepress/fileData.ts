@@ -52,40 +52,44 @@ export default function getJsonFiles() {
   function isValues(item) {
     const values = Object.values(item)[0] as any
     const key = Object.keys(item)[0] as any
-    values.map(path => {
-      if (typeof path === 'string') {
-        const files = fs.readdirSync(pathDir.resolve(__dirname, `../${path}`))
-        const index = values.findIndex(i => i === path)
-        item[key].some(e => {
-          if (e === path && typeof e === 'string') {
-            const children = files
-              .map(v => {
-                if (!/txt/.test(v)) {
-                  return `/${path}\\${v}`.replace(/\\/g, '/')
-                }
-              })
-              .filter(v => v)
-            // 将README文件放在第一个
-            const I = children.findIndex(e => /README/g.test(e))
-            const value = children.find(e => /README/g.test(e))
-            children.splice(I, 1)
-            children.unshift(value)
-            item[key][index] = {
-              text: files
+    if (typeof values === 'object') {
+      values.map(path => {
+        if (typeof path === 'string') {
+          const files = fs.readdirSync(pathDir.resolve(__dirname, `../${path}`))
+          const index = values.findIndex(i => i === path)
+          item[key].some(e => {
+            if (e === path && typeof e === 'string') {
+              const children = files
                 .map(v => {
-                  if (/txt/.test(v)) {
-                    return v.replace(/\.txt/gi, '')
+                  if (!/txt/.test(v)) {
+                    return `/${path}\\${v}`.replace(/\\/g, '/')
                   }
                 })
-                .filter(v => v)[0],
-              children
+                .filter(v => v)
+              // 将README文件放在第一个
+              const value = children.find(e => /README/g.test(e))
+              if (value) {
+                const I = children.findIndex(e => /README/g.test(e))
+                children.splice(I, 1)
+                children.unshift(value)
+              }
+              item[key][index] = {
+                text: files
+                  .map(v => {
+                    if (/txt/.test(v)) {
+                      return v.replace(/\.txt/gi, '')
+                    }
+                  })
+                  .filter(v => v)[0],
+                children
+              }
             }
-          }
-        })
-      } else {
-        isValues(path)
-      }
-    })
+          })
+        } else {
+          isValues(path)
+        }
+      })
+    }
   }
   for (let i = 0; i < newArr.length; i++) {
     const element = newArr[i]
@@ -98,16 +102,18 @@ export default function getJsonFiles() {
     const values = Object.values(item)[0]
     for (const key in item) {
       const value = item[key]
-      for (let iterator of value) {
-        if (iterator['text']) {
-          iterator['collapsible'] = true
-        } else {
-          const kye = Object.keys(iterator)[0]
-          const text = kye.split('\\')
-          iterator['text'] = text[text.length - 1]
-          iterator['collapsible'] = true
-          iterator['children'] = Object.values(iterator)[0]
-          delete iterator[kye]
+      if (typeof value === 'object') {
+        for (let iterator of value) {
+          if (iterator['text']) {
+            iterator['collapsible'] = true
+          } else {
+            const kye = Object.keys(iterator)[0]
+            const text = kye.split('\\')
+            iterator['text'] = text[text.length - 1]
+            iterator['collapsible'] = true
+            iterator['children'] = Object.values(iterator)[0]
+            delete iterator[kye]
+          }
         }
       }
     }
