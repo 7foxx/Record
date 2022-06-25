@@ -6,22 +6,22 @@ export default defineUserConfig({
   lang: 'zh-CN',
   title: '你好， 打工人 ！',
   port: 8082,
-  open:true,
+  open: true,
   // description: '这是我的第一个 VuePress 站点',
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
       {
         text: '学习',
-        children: ['/page/Native/A-Preface', '/page/Record/A-Preface']
+        children: ['/page/Native/0-Preface', '/page/Record/0-Preface']
       },
       {
         text: '记录',
-        link: '/page/TheProblem/A-Preface'
+        link: '/page/TheProblem/0-Preface'
       },
       {
         text: '面试题',
-        link: '/page/TheInterview/A-Preface'
+        link: '/page/TheInterview/0-Preface'
       }
     ],
     sidebar: Sidebar(),
