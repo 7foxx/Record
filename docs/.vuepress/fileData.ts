@@ -109,7 +109,7 @@ export default function getJsonFiles() {
           } else {
             const kye = Object.keys(iterator)[0]
             const text = kye.split('\\')
-            iterator['text'] = text[text.length - 1]
+            iterator['text'] = text[text.length - 1]?.replace(/[\d]+\-/gi, '')
             iterator['collapsible'] = true
             iterator['children'] = Object.values(iterator)[0]
             delete iterator[kye]

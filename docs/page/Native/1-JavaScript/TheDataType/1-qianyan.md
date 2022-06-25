@@ -1,4 +1,4 @@
-## 简介
+# 简介
 
 JavaScript 语言的每一个值，都属于某一种数据类型。JavaScript 的数据类型，共有六种。（ES6 又新增了第七种 Symbol 类型的值，本教程不涉及。）
 
@@ -74,7 +74,7 @@ if (v) {
 }
 // ReferenceError: v is not defined
 // 正确的写法
-if (typeof v === "undefined") {
+if (typeof v === 'undefined') {
   // ...
 }
 ```
@@ -90,8 +90,8 @@ typeof [] // "object"
 上面代码中，空数组（`[]`）的类型也是`object`，这表示在 JavaScript 内部，数组本质上只是一种特殊的对象。这里顺便提一下，`instanceof`运算符可以区分数组和对象。`instanceof`运算符的详细解释，请见 [《面向对象编程》]() 一章。
 
 ```js
-var o = {};
-var a = [];
+var o = {}
+var a = []
 o instanceof Array // false
 a instanceof Array // true
 ```
@@ -102,4 +102,4 @@ a instanceof Array // true
 typeof null // "object"
 ```
 
-<sup><font color='red'>重点（null 的由来）</font></sup>`null`的类型是`object`，这是由于历史原因造成的。1995年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑`null`，只把它当作`object`的一种特殊值。后来`null`独立出来，作为一种单独的数据类型，为了兼容以前的代码，`typeof null`返回`object`就没法改变了。
+<sup><font color='red'>重点（null 的由来）</font></sup>`null`的类型是`object`，这是由于历史原因造成的。1995 年的 JavaScript 语言第一版，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），没考虑`null`，只把它当作`object`的一种特殊值。后来`null`独立出来，作为一种单独的数据类型，为了兼容以前的代码，`typeof null`返回`object`就没法改变了。
