@@ -1,9 +1,11 @@
+# Array 数组
+
 ## 构造函数
 
 `Array`是 JavaScript 的原生对象，同时也是一个构造函数，可以用它生成新的数组。
 
 ```js
-var arr = new Array(2);
+var arr = new Array(2)
 arr.length // 2
 arr // [ empty x 2 ]
 ```
@@ -13,9 +15,9 @@ arr // [ empty x 2 ]
 如果没有使用`new`关键字，运行结果也是一样的。
 
 ```js
-var arr = new Array(2);
+var arr = new Array(2)
 // 等同于
-var arr = Array(2);
+var arr = Array(2)
 ```
 
 考虑到语义性，以及与其他构造函数用户保持一致，建议总是加上`new`。
@@ -48,9 +50,9 @@ new Array('a', 'b', 'c') // ['a', 'b', 'c']
 
 ```js
 // bad
-var arr = new Array(1, 2);
+var arr = new Array(1, 2)
 // good
-var arr = [1, 2];
+var arr = [1, 2]
 ```
 
 ::: warning
@@ -60,8 +62,8 @@ var arr = [1, 2];
 :::
 
 ```js
-var a = new Array(3);
-var b = [undefined, undefined, undefined];
+var a = new Array(3)
+var b = [undefined, undefined, undefined]
 a.length // 3
 b.length // 3
 a[0] // undefined
@@ -70,7 +72,7 @@ b[0] // undefined
 0 in b // true
 ```
 
-上面代码中，`a`是`Array()`生成的一个长度为3的空数组，`b`是一个三个成员都是`undefined`的数组，这两个数组是不一样的。读取键值的时候，`a`和`b`都返回`undefined`，但是`a`的键名（成员的序号）都是空的，`b`的键名是有值的。
+上面代码中，`a`是`Array()`生成的一个长度为 3 的空数组，`b`是一个三个成员都是`undefined`的数组，这两个数组是不一样的。读取键值的时候，`a`和`b`都返回`undefined`，但是`a`的键名（成员的序号）都是空的，`b`的键名是有值的。
 
 ## 静态方法
 
@@ -79,7 +81,7 @@ b[0] // undefined
 `Array.isArray`方法返回一个布尔值，表示参数是否为数组。它可以弥补`typeof`运算符的不足。
 
 ```js
-var arr = [1, 2, 3];
+var arr = [1, 2, 3]
 typeof arr // "object"
 Array.isArray(arr) // true
 ```
@@ -93,16 +95,16 @@ Array.isArray(arr) // true
 `valueOf`方法是一个所有对象都拥有的方法，表示对该对象求值。不同对象的`valueOf`方法不尽一致，数组的`valueOf`方法返回数组本身。
 
 ```js
-var arr = [1, 2, 3];
+var arr = [1, 2, 3]
 arr.valueOf() // [1, 2, 3]
 ```
 
 `toString`方法也是对象的通用方法，数组的`toString`方法返回数组的字符串形式。
 
 ```js
-var arr = [1, 2, 3];
+var arr = [1, 2, 3]
 arr.toString() // "1,2,3"
-var arr = [1, 2, 3, [4, 5, 6]];
+var arr = [1, 2, 3, [4, 5, 6]]
 arr.toString() // "1,2,3,4,5,6"
 ```
 
@@ -111,7 +113,7 @@ arr.toString() // "1,2,3,4,5,6"
 `push`方法用于在数组的末端添加一个或多个元素，并返回添加新元素后的数组长度。**注意，该方法会改变原数组。**
 
 ```js
-var arr = [];
+var arr = []
 arr.push(1) // 1
 arr.push('a') // 2
 arr.push(true, {}) // 4
@@ -123,7 +125,7 @@ arr // [1, 'a', true, {}]
 `pop`方法用于删除数组的最后一个元素，并返回该元素。**注意，该方法会改变原数组。**
 
 ```js
-var arr = ['a', 'b', 'c'];
+var arr = ['a', 'b', 'c']
 arr.pop() // 'c'
 arr // ['a', 'b']
 ```
@@ -131,16 +133,16 @@ arr // ['a', 'b']
 对空数组使用`pop`方法，不会报错，而是返回`undefined`。
 
 ```js
-[].pop() // undefined
+;[].pop() // undefined
 ```
 
 `push`和`pop`结合使用，就构成了“后进先出”的栈结构（stack）。
 
 ```js
-var arr = [];
-arr.push(1, 2);
-arr.push(3);
-arr.pop();
+var arr = []
+arr.push(1, 2)
+arr.push(3)
+arr.pop()
 arr // [1, 2]
 ```
 
@@ -151,7 +153,7 @@ arr // [1, 2]
 `shift()`方法用于删除数组的第一个元素，并返回该元素。**注意，该方法会改变原数组。**
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.shift() // 'a'
 a // ['b', 'c']
 ```
@@ -161,10 +163,10 @@ a // ['b', 'c']
 `shift()`方法可以遍历并清空一个数组。
 
 ```js
-var list = [1, 2, 3, 4];
-var item;
-while (item = list.shift()) {
-  console.log(item);
+var list = [1, 2, 3, 4]
+var item
+while ((item = list.shift())) {
+  console.log(item)
 }
 list // []
 ```
@@ -176,15 +178,15 @@ list // []
 `unshift()`方法用于在数组的第一个位置添加元素，并返回添加新元素后的数组长度。**注意，该方法会改变原数组。**
 
 ```js
-var a = ['a', 'b', 'c'];
-a.unshift('x'); // 4
+var a = ['a', 'b', 'c']
+a.unshift('x') // 4
 a // ['x', 'a', 'b', 'c']
 ```
 
 `unshift()`方法可以接受多个参数，这些参数都会添加到目标数组头部。
 
 ```js
-var arr = [ 'c', 'd' ];
+var arr = ['c', 'd']
 arr.unshift('a', 'b') // 4
 arr // [ 'a', 'b', 'c', 'd' ]
 ```
@@ -194,7 +196,7 @@ arr // [ 'a', 'b', 'c', 'd' ]
 `join()`方法以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。
 
 ```js
-var a = [1, 2, 3, 4];
+var a = [1, 2, 3, 4]
 a.join(' ') // '1 2 3 4'
 a.join(' | ') // "1 | 2 | 3 | 4"
 a.join() // "1,2,3,4"
@@ -214,7 +216,7 @@ a.join() // "1,2,3,4"
 ```js
 Array.prototype.join.call('hello', '-')
 // "h-e-l-l-o"
-var obj = { 0: 'a', 1: 'b', length: 2 };
+var obj = { 0: 'a', 1: 'b', length: 2 }
 Array.prototype.join.call(obj, '-')
 // 'a-b'
 ```
@@ -237,17 +239,17 @@ Array.prototype.join.call(obj, '-')
 除了数组作为参数，`concat`也接受其他类型的值作为参数，添加到目标数组尾部。
 
 ```js
-[1, 2, 3].concat(4, 5, 6)
+;[1, 2, 3].concat(4, 5, 6)
 // [1, 2, 3, 4, 5, 6]
 ```
 
 如果数组成员包括对象，`concat`方法返回当前数组的一个浅拷贝。所谓“浅拷贝”，指的是新数组拷贝的是对象的引用。
 
 ```js
-var obj = { a: 1 };
-var oldArray = [obj];
-var newArray = oldArray.concat();
-obj.a = 2;
+var obj = { a: 1 }
+var oldArray = [obj]
+var newArray = oldArray.concat()
+obj.a = 2
 newArray[0].a // 2
 ```
 
@@ -258,7 +260,7 @@ newArray[0].a // 2
 `reverse`方法用于颠倒排列数组元素，返回改变后的数组。**注意，该方法将改变原数组。**
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.reverse() // ["c", "b", "a"]
 a // ["c", "b", "a"]
 ```
@@ -268,13 +270,13 @@ a // ["c", "b", "a"]
 `slice()`方法用于提取目标数组的一部分，返回一个新数组，**原数组不变**。
 
 ```js
-arr.slice(start, end);
+arr.slice(start, end)
 ```
 
-它的第一个参数为起始位置（从0开始，会包括在返回的新数组之中），第二个参数为终止位置（但该位置的元素本身不包括在内）。如果省略第二个参数，则一直返回到原数组的最后一个成员。
+它的第一个参数为起始位置（从 0 开始，会包括在返回的新数组之中），第二个参数为终止位置（但该位置的元素本身不包括在内）。如果省略第二个参数，则一直返回到原数组的最后一个成员。
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.slice(0) // ["a", "b", "c"]
 a.slice(1) // ["b", "c"]
 a.slice(1, 2) // ["b"]
@@ -287,7 +289,7 @@ a.slice() // ["a", "b", "c"]
 如果`slice()`方法的参数是负数，则表示倒数计算的位置。
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.slice(-2) // ["b", "c"]
 a.slice(-2, -1) // ["b"]
 ```
@@ -297,7 +299,7 @@ a.slice(-2, -1) // ["b"]
 如果第一个参数大于等于数组长度，或者第二个参数小于第一个参数，则返回空数组。
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.slice(4) // []
 a.slice(2, 1) // []
 ```
@@ -307,8 +309,8 @@ a.slice(2, 1) // []
 ```js
 Array.prototype.slice.call({ 0: 'a', 1: 'b', length: 2 })
 // ['a', 'b']
-Array.prototype.slice.call(document.querySelectorAll("div"));
-Array.prototype.slice.call(arguments);
+Array.prototype.slice.call(document.querySelectorAll('div'))
+Array.prototype.slice.call(arguments)
 ```
 
 上面代码的参数都不是数组，但是通过`call`方法，在它们上面调用`slice()`方法，就可以把它们转为真正的数组。
@@ -321,18 +323,18 @@ Array.prototype.slice.call(arguments);
 arr.splice(start, count, addElement1, addElement2, ...);
 ```
 
-`splice`的第一个参数是删除的起始位置（从0开始），第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。
+`splice`的第一个参数是删除的起始位置（从 0 开始），第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。
 
 ```js
-var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+var a = ['a', 'b', 'c', 'd', 'e', 'f']
 a.splice(4, 2) // ["e", "f"]
 a // ["a", "b", "c", "d"]
 ```
 
-上面代码从原数组4号位置，删除了两个数组成员。
+上面代码从原数组 4 号位置，删除了两个数组成员。
 
 ```js
-var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+var a = ['a', 'b', 'c', 'd', 'e', 'f']
 a.splice(4, 2, 1, 2) // ["e", "f"]
 a // ["a", "b", "c", "d", 1, 2]
 ```
@@ -342,7 +344,7 @@ a // ["a", "b", "c", "d", 1, 2]
 起始位置如果是负数，就表示从倒数位置开始删除。
 
 ```js
-var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+var a = ['a', 'b', 'c', 'd', 'e', 'f']
 a.splice(-4, 2) // ["c", "d"]
 ```
 
@@ -351,7 +353,7 @@ a.splice(-4, 2) // ["c", "d"]
 如果只是单纯地插入元素，`splice`方法的第二个参数可以设为`0`。
 
 ```js
-var a = [1, 1, 1];
+var a = [1, 1, 1]
 a.splice(1, 0, 2) // []
 a // [1, 2, 1, 1]
 ```
@@ -359,7 +361,7 @@ a // [1, 2, 1, 1]
 如果只提供第一个参数，等同于将原数组在指定位置拆分成两个数组。
 
 ```js
-var a = [1, 2, 3, 4];
+var a = [1, 2, 3, 4]
 a.splice(2) // [3, 4]
 a // [1, 2]
 ```
@@ -369,13 +371,20 @@ a // [1, 2]
 `sort`方法对数组成员进行排序，默认是按照字典顺序排序。排序后，**原数组将被改变。**
 
 ```js
-['d', 'c', 'b', 'a'].sort()
-// ['a', 'b', 'c', 'd']
-[4, 3, 2, 1].sort()
-// [1, 2, 3, 4]
-[11, 101].sort()
-// [101, 11]
-[10111, 1101, 111].sort()
+;['d', 'c', 'b', 'a']
+  .sort()
+  [
+    // ['a', 'b', 'c', 'd']
+    (4, 3, 2, 1)
+  ].sort()
+  [
+    // [1, 2, 3, 4]
+    (11, 101)
+  ].sort()
+  [
+    // [101, 11]
+    (10111, 1101, 111)
+  ].sort()
 // [10111, 1101, 111]
 ```
 
@@ -384,8 +393,8 @@ a // [1, 2]
 如果想让`sort`方法按照自定义方式排序，可以传入一个函数作为参数。
 
 ```js
-[10111, 1101, 111].sort(function (a, b) {
-  return a - b;
+;[10111, 1101, 111].sort(function (a, b) {
+  return a - b
 })
 // [111, 1101, 10111]
 ```
@@ -393,12 +402,12 @@ a // [1, 2]
 上面代码中，`sort`的参数函数本身接受两个参数，表示进行比较的两个数组成员。如果该函数的返回值大于`0`，表示第一个成员排在第二个成员后面；其他情况下，都是第一个元素排在第二个元素前面。
 
 ```js
-[
-  { name: "张三", age: 30 },
-  { name: "李四", age: 24 },
-  { name: "王五", age: 28  }
+;[
+  { name: '张三', age: 30 },
+  { name: '李四', age: 24 },
+  { name: '王五', age: 28 }
 ].sort(function (o1, o2) {
-  return o1.age - o2.age;
+  return o1.age - o2.age
 })
 // [
 //   { name: "李四", age: 24 },
@@ -415,9 +424,12 @@ a // [1, 2]
 
 ```js
 // bad
-[1, 4, 2, 6, 0, 6, 2, 6].sort((a, b) => a > b)
-// good
-[1, 4, 2, 6, 0, 6, 2, 6].sort((a, b) => a - b)
+;[1, 4, 2, 6, 0, 6, 2, 6]
+  .sort((a, b) => a > b)
+  [
+    // good
+    (1, 4, 2, 6, 0, 6, 2, 6)
+  ].sort((a, b) => a - b)
 ```
 
 上面代码中，前一种排序算法返回的是布尔值，这是不推荐使用的。后一种是数值，才是更好的写法。
@@ -427,10 +439,10 @@ a // [1, 2]
 `map`方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。
 
 ```js
-var numbers = [1, 2, 3];
+var numbers = [1, 2, 3]
 numbers.map(function (n) {
-  return n + 1;
-});
+  return n + 1
+})
 // [2, 3, 4]
 numbers
 // [1, 2, 3]
@@ -441,9 +453,9 @@ numbers
 `map`方法接受一个函数作为参数。该函数调用时，`map`方法向它传入三个参数：当前成员、当前位置和数组本身。
 
 ```js
-[1, 2, 3].map(function(elem, index, arr) {
-  return elem * index;
-});
+;[1, 2, 3].map(function (elem, index, arr) {
+  return elem * index
+})
 // [0, 2, 6]
 ```
 
@@ -452,9 +464,9 @@ numbers
 `map`方法还可以接受第二个参数，用来绑定回调函数内部的`this`变量（详见《this 变量》一章）。
 
 ```js
-var arr = ['a', 'b', 'c'];
-[1, 2].map(function (e) {
-  return this[e];
+var arr = ['a', 'b', 'c']
+;[1, 2].map(function (e) {
+  return this[e]
 }, arr)
 // ['b', 'c']
 ```
@@ -480,9 +492,9 @@ var f = function (n) { return 'a' };
 
 ```js
 function log(element, index, array) {
-  console.log('[' + index + '] = ' + element);
+  console.log('[' + index + '] = ' + element)
 }
-[2, 5, 9].forEach(log);
+;[2, 5, 9].forEach(log)
 // [0] = 2
 // [1] = 5
 // [2] = 9
@@ -493,10 +505,10 @@ function log(element, index, array) {
 `forEach`方法也可以接受第二个参数，绑定参数函数的`this`变量。
 
 ```js
-var out = [];
-[1, 2, 3].forEach(function(elem) {
-  this.push(elem * elem);
-}, out);
+var out = []
+;[1, 2, 3].forEach(function (elem) {
+  this.push(elem * elem)
+}, out)
 out // [1, 4, 9]
 ```
 
@@ -509,10 +521,10 @@ out // [1, 4, 9]
 :::
 
 ```js
-var arr = [1, 2, 3];
+var arr = [1, 2, 3]
 for (var i = 0; i < arr.length; i++) {
-  if (arr[i] === 2) break;
-  console.log(arr[i]);
+  if (arr[i] === 2) break
+  console.log(arr[i])
 }
 // 1
 ```
@@ -547,8 +559,8 @@ var log = function (n) {
 它的参数是一个函数，所有数组成员依次执行该函数，返回结果为`true`的成员组成一个新数组返回。该方法不会改变原数组。
 
 ```js
-[1, 2, 3, 4, 5].filter(function (elem) {
-  return (elem > 3);
+;[1, 2, 3, 4, 5].filter(function (elem) {
+  return elem > 3
 })
 // [4, 5]
 ```
@@ -556,7 +568,7 @@ var log = function (n) {
 上面代码将大于`3`的数组成员，作为一个新数组返回。
 
 ```js
-var arr = [0, 1, 'a', false];
+var arr = [0, 1, 'a', false]
 arr.filter(Boolean)
 // [1, "a"]
 ```
@@ -566,9 +578,9 @@ arr.filter(Boolean)
 `filter`方法的参数函数可以接受三个参数：当前成员，当前位置和整个数组。
 
 ```js
-[1, 2, 3, 4, 5].filter(function (elem, index, arr) {
-  return index % 2 === 0;
-});
+;[1, 2, 3, 4, 5].filter(function (elem, index, arr) {
+  return index % 2 === 0
+})
 // [1, 3, 5]
 ```
 
@@ -577,11 +589,11 @@ arr.filter(Boolean)
 `filter`方法还可以接受第二个参数，用来绑定参数函数内部的`this`变量。
 
 ```js
-var obj = { MAX: 3 };
+var obj = { MAX: 3 }
 var myFilter = function (item) {
-  if (item > this.MAX) return true;
-};
-var arr = [2, 8, 3, 4, 1, 3, 2, 9];
+  if (item > this.MAX) return true
+}
+var arr = [2, 8, 3, 4, 1, 3, 2, 9]
 arr.filter(myFilter, obj) // [8, 4, 9]
 ```
 
@@ -596,22 +608,22 @@ arr.filter(myFilter, obj) // [8, 4, 9]
 `some`方法是只要一个成员的返回值是`true`，则整个`some`方法的返回值就是`true`，否则返回`false`。
 
 ```js
-var arr = [1, 2, 3, 4, 5];
+var arr = [1, 2, 3, 4, 5]
 arr.some(function (elem, index, arr) {
-  return elem >= 3;
-});
+  return elem >= 3
+})
 // true
 ```
 
-上面代码中，如果数组`arr`有一个成员大于等于3，`some`方法就返回`true`。
+上面代码中，如果数组`arr`有一个成员大于等于 3，`some`方法就返回`true`。
 
 `every`方法是所有成员的返回值都是`true`，整个`every`方法才返回`true`，否则返回`false`。
 
 ```js
-var arr = [1, 2, 3, 4, 5];
+var arr = [1, 2, 3, 4, 5]
 arr.every(function (elem, index, arr) {
-  return elem >= 3;
-});
+  return elem >= 3
+})
 // false
 ```
 
@@ -635,9 +647,9 @@ function isEven(x) { return x % 2 === 0 }
 - `reduceRight`则是从右到左（从最后一个成员到第一个成员），其他完全一样。
 
 ```js
-[1, 2, 3, 4, 5].reduce(function (a, b) {
-  console.log(a, b);
-  return a + b;
+;[1, 2, 3, 4, 5].reduce(function (a, b) {
+  console.log(a, b)
+  return a + b
 })
 // 1 2
 // 3 3
@@ -652,7 +664,7 @@ function isEven(x) { return x % 2 === 0 }
 
 1. 累积变量，默认为数组的第一个成员
 2. 当前变量，默认为数组的第二个成员
-3. 当前位置（从0开始）
+3. 当前位置（从 0 开始）
 4. 原数组
 
 这四个参数之中，只有前两个是必须的，后两个则是可选的。
@@ -660,13 +672,13 @@ function isEven(x) { return x % 2 === 0 }
 如果要对累积变量指定初值，可以把它放在`reduce`方法和`reduceRight`方法的第二个参数。
 
 ```js
-[1, 2, 3, 4, 5].reduce(function (a, b) {
-  return a + b;
-}, 10);
+;[1, 2, 3, 4, 5].reduce(function (a, b) {
+  return a + b
+}, 10)
 // 25
 ```
 
-上面代码指定参数`a`的初值为10，所以数组从10开始累加，最终结果为25。注意，这时`b`是从数组的第一个成员开始遍历。
+上面代码指定参数`a`的初值为 10，所以数组从 10 开始累加，最终结果为 25。注意，这时`b`是从数组的第一个成员开始遍历。
 
 上面的第二个参数相当于设定了默认值，处理空数组时尤其有用。
 
@@ -686,10 +698,11 @@ function add(prev, cur) {
 
 ```js
 function subtract(prev, cur) {
-  return prev - cur;
+  return prev - cur
 }
-[3, 2, 1].reduce(subtract) // 0
-[3, 2, 1].reduceRight(subtract) // -4
+;[3, 2, 1]
+  .reduce(subtract) // 0
+  [(3, 2, 1)].reduceRight(subtract) // -4
 ```
 
 上面代码中，`reduce`方法相当于`3`减去`2`再减去`1`，`reduceRight`方法相当于`1`减去`2`再减去`3`。
@@ -699,13 +712,11 @@ function subtract(prev, cur) {
 ```js
 function findLongest(entries) {
   return entries.reduce(function (longest, entry) {
-    return entry.length > longest.length ? entry : longest;
-  }, '');
+    return entry.length > longest.length ? entry : longest
+  }, '')
 }
 findLongest(['aaa', 'bb', 'c']) // "aaa"
 ```
-
-
 
 上面代码中，`reduce`的参数函数会将字符长度较长的那个数组成员，作为累积值。这导致遍历所有成员之后，累积值就是字符长度最长的那个成员。
 
@@ -714,7 +725,7 @@ findLongest(['aaa', 'bb', 'c']) // "aaa"
 `indexOf`方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回`-1`。
 
 ```js
-var a = ['a', 'b', 'c'];
+var a = ['a', 'b', 'c']
 a.indexOf('b') // 1
 a.indexOf('y') // -1
 ```
@@ -722,15 +733,15 @@ a.indexOf('y') // -1
 `indexOf`方法还可以接受第二个参数，表示搜索的开始位置。
 
 ```js
-['a', 'b', 'c'].indexOf('a', 1) // -1
+;['a', 'b', 'c'].indexOf('a', 1) // -1
 ```
 
-上面代码从1号位置开始搜索字符`a`，结果为`-1`，表示没有搜索到。
+上面代码从 1 号位置开始搜索字符`a`，结果为`-1`，表示没有搜索到。
 
 `lastIndexOf`方法返回给定元素在数组中最后一次出现的位置，如果没有出现则返回`-1`。
 
 ```js
-var a = [2, 5, 9, 2];
+var a = [2, 5, 9, 2]
 a.lastIndexOf(2) // 3
 a.lastIndexOf(7) // -1
 ```
@@ -742,8 +753,9 @@ a.lastIndexOf(7) // -1
 :::
 
 ```js
-[NaN].indexOf(NaN) // -1
-[NaN].lastIndexOf(NaN) // -1
+;[NaN]
+  .indexOf(NaN) // -1
+  [NaN].lastIndexOf(NaN) // -1
 ```
 
 这是因为这两个方法内部，使用严格相等运算符（`===`）进行比较，**而`NaN`是唯一一个不等于自身的值**。
@@ -754,19 +766,19 @@ a.lastIndexOf(7) // -1
 
 ```js
 var users = [
-  {name: 'tom', email: 'tom@example.com'},
-  {name: 'peter', email: 'peter@example.com'}
-];
+  { name: 'tom', email: 'tom@example.com' },
+  { name: 'peter', email: 'peter@example.com' }
+]
 users
-.map(function (user) {
-  return user.email;
-})
-.filter(function (email) {
-  return /^t/.test(email);
-})
-.forEach(function (email) {
-  console.log(email);
-});
+  .map(function (user) {
+    return user.email
+  })
+  .filter(function (email) {
+    return /^t/.test(email)
+  })
+  .forEach(function (email) {
+    console.log(email)
+  })
 // "tom@example.com"
 ```
 
