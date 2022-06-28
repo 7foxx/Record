@@ -4,12 +4,12 @@
 
 对象是 JavaScript 语言最主要的数据类型，三种原始类型的值——**数值、字符串、布尔值**——在一定条件下，也会自动转为对象，也就是原始类型的“包装对象”（wrapper）。
 
-所谓“包装对象”，**指的是与数值、字符串、布尔值分别相对应的`Number`、`String`、`Boolean`三个原生对象。这三个原生对象可以把原始类型的值变成（包装成）对象。**
+**所谓“包装对象”，指的是与数值、字符串、布尔值分别相对应的`Number`、`String`、`Boolean`三个原生对象。这三个原生对象可以把原始类型的值变成（包装成）对象。**
 
 ```js
-var v1 = new Number(123);
-var v2 = new String('abc');
-var v3 = new Boolean(true);
+var v1 = new Number(123)
+var v2 = new String('abc')
+var v3 = new Boolean(true)
 
 typeof v1 // "object"
 typeof v2 // "object"
@@ -52,7 +52,7 @@ Boolean(123) // true
 `valueOf()`方法返回包装对象实例对应的原始类型的值。
 
 ```js
-new Number(123).valueOf()  // 123
+new Number(123).valueOf() // 123
 new String('abc').valueOf() // "abc"
 new Boolean(true).valueOf() // true
 ```
@@ -80,7 +80,7 @@ new Boolean(true).toString() // "true"
 上面代码中，`abc`是一个字符串，本身不是对象，不能调用`length`属性。**JavaScript 引擎自动将其转为包装对象，在这个对象上调用`length`属性。调用结束后，这个临时对象就会被销毁**。这就叫原始类型与实例对象的自动转换。
 
 ```js
-var str = 'abc';
+var str = 'abc'
 str.length // 3
 // 等同于
 var strObj = new String(str)
@@ -95,8 +95,8 @@ strObj.length // 3
 自动转换生成的包装对象是只读的，无法修改。所以，字符串无法添加新属性。
 
 ```js
-var s = 'Hello World';
-s.x = 123;
+var s = 'Hello World'
+s.x = 123
 s.x // undefined
 ```
 
@@ -116,18 +116,17 @@ s.x // undefined
 
 ```js
 String.prototype.double = function () {
-  return this.valueOf() + this.valueOf();
-};
+  return this.valueOf() + this.valueOf()
+}
 
 'abc'.double()
 // abcabc
 
 Number.prototype.double = function () {
-  return this.valueOf() + this.valueOf();
-};
+  return this.valueOf() + this.valueOf()
+}
 
-(123).double() // 246
+;(123).double() // 246
 ```
 
 上面代码在`String`和`Number`这两个对象的原型上面，分别自定义了一个方法，从而可以在所有实例对象上调用。**注意，最后一行的`123`外面必须要加上圆括号，否则后面的点运算符（`.`）会被解释成小数点。**
-
