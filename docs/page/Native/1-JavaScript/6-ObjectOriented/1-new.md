@@ -20,9 +20,9 @@ JavaScript 语言具有很强的面向对象编程能力，本章介绍 JavaScri
 
 ## 构造函数
 
-面向对象编程的第一步，就是要生成对象。前面说过，对象是单个实物的抽象。通常需要一个模板，表示某一类实物的共同特征，然后对象根据这个模板生成。
+**面向对象编程的第一步，就是要生成对象**。前面说过，对象是单个实物的抽象。通常需要一个模板，表示某一类实物的共同特征，然后对象根据这个模板生成。
 
-典型的面向对象编程语言（比如 C++ 和 Java），都有“类”（class）这个概念。所谓“类”就是对象的模板，对象就是“类”的实例。但是，JavaScript 语言的对象体系，不是基于“类”的，而是基于构造函数（constructor）和原型链（prototype）。
+典型的面向对象编程语言（比如 C++ 和 Java），都有“类”（class）这个概念。所谓“类”就是对象的模板，对象就是“类”的实例。但是，**JavaScript 语言的对象体系，不是基于“类”的，而是基于构造函数（constructor）和原型链（prototype）。**
 
 JavaScript 语言使用构造函数（constructor）作为对象的模板。**所谓”构造函数”，就是专门用来生成实例对象的函数。它就是对象的模板，描述实例对象的基本结构。一个构造函数，可以生成多个实例对象，这些实例对象都有相同的结构。**
 
@@ -58,7 +58,7 @@ var v = new Vehicle();
 v.price // 1000
 ```
 
-上面代码通过`new`命令，让构造函数`Vehicle`生成一个实例对象，保存在变量`v`中。这个新生成的实例对象，从构造函数`Vehicle`得到了`price`属性。`new`命令执行时，构造函数内部的`this`，就代表了新生成的实例对象，`this.price`表示实例对象有一个`price`属性，值是1000。
+上面代码通过`new`命令，让构造函数`Vehicle`生成一个实例对象，保存在变量`v`中。这个新生成的实例对象，从构造函数`Vehicle`得到了`price`属性。**`new`命令执行时，构造函数内部的`this`，就代表了新生成的实例对象**，`this.price`表示实例对象有一个`price`属性，值是1000。
 
 使用`new`命令时，根据需要，构造函数也可以接受参数。
 
@@ -70,7 +70,7 @@ var Vehicle = function (p) {
 var v = new Vehicle(500);
 ```
 
-`new`命令本身就可以执行构造函数，所以后面的构造函数可以带括号，也可以不带括号。下面两行代码是等价的，但是为了表示这里是函数调用，推荐使用括号。
+**`new`命令本身就可以执行构造函数，所以后面的构造函数可以带括号，也可以不带括号**。下面两行代码是等价的，但是为了表示这里是函数调用，推荐使用括号。（带括号可以传递参数）
 
 ```js
 // 推荐的写法
@@ -179,3 +179,70 @@ msg // {}
 typeof msg // "object"
 ```
 
+上面代码中，`getMessage`是一个普通函数，返回一个字符串。对它使用`new`命令，会得到一个空对象。这是因为**`new`命令总是返回一个对象，要么是实例对象，要么是`return`语句指定的对象**。本例中，`return`语句返回的是字符串，所以`new`命令就忽略了该语句。
+
+`new`命令简化的内部流程，可以用下面的代码表示。
+
+```js
+function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
+  // 将 arguments 对象转为数组
+  var args = [].slice.call(arguments);
+  // 取出构造函数
+  var constructor = args.shift();
+  // 创建一个空对象，继承构造函数的 prototype 属性
+  var context = Object.create(constructor.prototype);
+  // 执行构造函数
+  var result = constructor.apply(context, args);
+  // 如果返回结果是对象，就直接返回，否则返回 context 对象
+  return (typeof result === 'object' && result != null) ? result : context;
+}
+// 实例
+var actor = _new(Person, '张三', 28);
+```
+
+### new.target
+
+函数内部可以使用`new.target`属性。如果当前函数是`new`命令调用，`new.target`指向当前函数，否则为`undefined`。
+
+```js
+function f() {
+  console.log(new.target === f);
+}
+f() // false
+new f() // true
+```
+
+使用这个属性，可以判断函数调用的时候，是否使用`new`命令。
+
+```js
+function f() {
+  if (!new.target) {
+    throw new Error('请使用 new 命令调用！');
+  }
+  // ...
+}
+f() // Uncaught Error: 请使用 new 命令调用！
+```
+
+上面代码中，构造函数`f`调用时，没有使用`new`命令，就抛出一个错误。
+
+## Object.create() 创建实例对象
+
+构造函数作为模板，可以生成实例对象。但是，有时拿不到构造函数，只能拿到一个现有的对象。我们希望以这个现有的对象作为模板，生成新的实例对象，这时就可以使用`Object.create()`方法。
+
+```js
+var person1 = {
+  name: '张三',
+  age: 38,
+  greeting: function() {
+    console.log('Hi! I\'m ' + this.name + '.');
+  }
+};
+var person2 = Object.create(person1);
+person2.name // 张三
+person2.greeting() // Hi! I'm 张三.
+```
+
+上面代码中，对象`person1`是`person2`的模板，后者继承了前者的属性和方法。
+
+`Object.create()`的详细介绍，请看后面的相关章节。
