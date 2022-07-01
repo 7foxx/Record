@@ -1,5 +1,5 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
-import Sidebar from './fileData'
+import sidebar from './fileData'
 const { copyCodePlugin } = require('vuepress-plugin-copy-code2')
 const { searchPlugin } = require('@vuepress/plugin-search')
 export default defineUserConfig({
@@ -13,18 +13,18 @@ export default defineUserConfig({
     navbar: [
       {
         text: '学习',
-        children: ['/page/Native/0-Preface', '/page/Record/0-Preface']
+        children: ['/page/Native/0-Preface', '/page/Extension/0-Preface']
       },
       {
         text: '记录',
-        link: '/page/TheProblem/0-Preface'
+        link: '/page/Record/0-Preface'
       },
       {
         text: '面试题',
         link: '/page/TheInterview/0-Preface'
       }
     ],
-    sidebar: Sidebar(),
+    sidebar,
     // sidebarDepth:3,
     // https://vuepress.vuejs.org/zh/theme/default-theme-config.html#git-%E4%BB%93%E5%BA%93%E5%92%8C%E7%BC%96%E8%BE%91%E9%93%BE%E6%8E%A5
     repo: 'https://github.com/7foxx/Record',

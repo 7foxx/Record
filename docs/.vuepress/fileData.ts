@@ -4,7 +4,7 @@ const pathDir = require('path')
 // 自动读取文件添加路由
 // 只支持到三级目录
 // 目录文件里不要方文件
-export default function getJsonFiles() {
+export default (function getJsonFiles() {
   const arr: any = []
   // 先获取所有文件夹名称
   function fileFun(path) {
@@ -121,4 +121,4 @@ export default function getJsonFiles() {
   })
   // console.log(JSON.stringify(router))
   return router
-}
+})()

@@ -29,11 +29,11 @@ JavaScript 提供了一个内部数据结构，用来描述对象的属性，控
 
 （3）`enumerable`
 
-`enumerable`是一个布尔值，**表示该属性是否可遍历，默认为`true` <font color=red>（使用 `Object.defineProperty()` 不设置默认为 `false`）</font>***。如果设为`false`，会使得某些操作（比如`for...in`循环、`Object.keys()`）跳过该属性。
+`enumerable`是一个布尔值，**表示该属性是否可遍历，默认为`true` <font color=red>（使用 `Object.defineProperty()` 不设置默认为 `false`）</font>**。如果设为`false`，会使得某些操作（比如`for...in`循环、`Object.keys()`）跳过该属性。
 
 （4）`configurable`
 
-`configurable`是一个布尔值，**表示可配置性，默认为`true` <font color=red>（使用 `Object.defineProperty()` 不设置默认为 `false`）</font>***。如果设为`false`，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（`value`属性除外）。也就是说，**`configurable`属性控制了属性描述对象的可写性。**
+`configurable`是一个布尔值，**表示可配置性，默认为`true` <font color=red>（使用 `Object.defineProperty()` 不设置默认为 `false`）</font>**。如果设为`false`，将阻止某些操作改写该属性，比如无法删除该属性，也不得改变该属性的属性描述对象（`value`属性除外）。也就是说，**`configurable`属性控制了属性描述对象的可写性。**
 
 （5）`get`
 
@@ -524,7 +524,7 @@ obj.next = 5;
 
 ::: tip
 
-`get next()`  /  `set next(n)` 这种写法叫 <font color=red>**存储器定义属性 **</font>是在限制给 `obj` 对象指定属性时的一些判断和限制，这里就是在给 `obj` 对象添加 `next` 属性时候就限制他必须大于当前值
+`get next()`  /  `set next(n)` 这种写法叫 **<font color=red>存储器定义属性</font>**是在限制给 `obj` 对象指定属性时的一些判断和限制，这里就是在给 `obj` 对象添加 `next` 属性时候就限制他必须大于当前值
 
 :::
 

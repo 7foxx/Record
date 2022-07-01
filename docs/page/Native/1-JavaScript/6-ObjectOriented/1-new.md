@@ -116,7 +116,9 @@ Fubar()
 
 上面代码的`Fubar`为构造函数，**`use strict`命令保证了该函数在严格模式下运行。由于严格模式中，函数内部的`this`不能指向全局对象，默认等于`undefined`**，导致不加`new`调用会报错（**JavaScript 不允许对`undefined`添加属性**）。
 
-<font color=red>**哪为什么使用了 `new` 就可以了？因为在 `new` 过程中会创造一个对象将 `this` 指向它，所以 `this` 就不再是 `undefined` 了**</font>
+**<font color=red>哪为什么使用了 `new` 就可以了？</font>**
+
+**<font color=red>因为在 `new` 过程中会创造一个对象将 `this` 指向它，所以 `this` 就不再是 `undefined` 了</font>**
 
 :::
 
@@ -150,7 +152,7 @@ Fubar(1, 2)._foo // 1
 
 **也就是说，构造函数内部，`this`指的是一个新生成的空对象，所有针对`this`的操作，都会发生在这个空对象上。构造函数之所以叫“构造函数”，就是说这个函数的目的，就是操作一个空对象（即`this`对象），将其“构造”为需要的样子。**
 
-<font color=red>**如果构造函数内部有`return`语句，而且`return`后面跟着一个对象，`new`命令会返回`return`语句指定的对象；否则，就会不管`return`语句，返回`this`对象。**</font>
+**<font color=red>如果构造函数内部有`return`语句，而且`return`后面跟着一个对象，`new`命令会返回`return`语句指定的对象；否则，就会不管`return`语句，返回`this`对象。</font>**
 
 :::
 
