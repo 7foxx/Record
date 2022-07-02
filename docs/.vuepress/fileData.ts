@@ -97,7 +97,7 @@ export default (function getJsonFiles() {
   }
   // 最后处理成路由
   const router = {}
-  newArr.map(item => {
+  newArr.map((item, i) => {
     const keys = Object.keys(item)[0]
     const values = Object.values(item)[0]
     for (const key in item) {
@@ -113,6 +113,11 @@ export default (function getJsonFiles() {
             iterator['collapsible'] = true
             iterator['children'] = Object.values(iterator)[0]
             delete iterator[kye]
+            iterator['children'].forEach(function (chivas) {
+              if (!chivas['collapsible']) {
+                chivas['collapsible'] = true
+              }
+            })
           }
         }
       }
