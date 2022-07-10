@@ -10,11 +10,11 @@
 
 :::
 
-JavaScript 之所以采用单线程，而不是多线程，跟历史有关系。JavaScript 从诞生起就是单线程，原因是不想让浏览器变得太复杂，**因为多线程需要共享资源、且有可能修改彼此的运行结果，对于一种网页脚本语言来说，这就太复杂了。如果 JavaScript 同时有两个线程，一个线程在网页 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？**是不是还要有锁机制？所以，为了避免复杂性，JavaScript 一开始就是单线程，这已经成了这门语言的核心特征，将来也不会改变。
+JavaScript 之所以采用单线程，而不是多线程，跟历史有关系。JavaScript 从诞生起就是单线程，原因是不想让浏览器变得太复杂，**因为多线程需要共享资源、且有可能修改彼此的运行结果，对于一种网页脚本语言来说，这就太复杂了。如果 JavaScript 同时有两个线程，一个线程在网页 DOM 节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？** 是不是还要有锁机制？所以，为了避免复杂性，JavaScript 一开始就是单线程，这已经成了这门语言的核心特征，将来也不会改变。
 
-这种模式的**<font color=#32ba86>好处是实现起来比较简单，执行环境相对单纯</font>**；**<font color=red>坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死）</font>**，往往就是因为某一段 JavaScript 代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。JavaScript 语言本身并不慢，慢的是读写外部数据，比如等待 Ajax 请求返回结果。这个时候，如果对方服务器迟迟没有响应，或者网络不通畅，就会导致脚本的长时间停滞。
+这种模式的 **<font color=#32ba86>好处是实现起来比较简单，执行环境相对单纯</font>；<font color=red>坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。</font>常见的浏览器无响应（假死），往往就是因为某一段 JavaScript 代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行。** JavaScript 语言本身并不慢，慢的是读写外部数据，比如等待 Ajax 请求返回结果。这个时候，如果对方服务器迟迟没有响应，或者网络不通畅，就会导致脚本的长时间停滞。
 
-如果排队是因为计算量大，CPU 忙不过来，倒也算了，但是很多时候 CPU 是闲着的，因为 IO 操作（输入输出）很慢（比如 Ajax 操作从网络读取数据），不得不等着结果出来，再往下执行。JavaScript 语言的设计者意识到，这时 CPU 完全可以不管 IO 操作，挂起处于等待中的任务，先运行排在后面的任务。等到 IO 操作返回了结果，再回过头，把挂起的任务继续执行下去。这种机制就是 JavaScript 内部采用的**“事件循环”机制（Event Loop）**。
+如果排队是因为计算量大，CPU 忙不过来，倒也算了，但是很多时候 CPU 是闲着的，因为 IO 操作（输入输出）很慢（比如 Ajax 操作从网络读取数据），不得不等着结果出来，再往下执行。JavaScript 语言的设计者意识到，这时 CPU 完全可以不管 IO 操作，挂起处于等待中的任务，先运行排在后面的任务。等到 IO 操作返回了结果，再回过头，把挂起的任务继续执行下去。这种机制就是 JavaScript 内部采用的 **“事件循环”机制（Event Loop）**。
 
 单线程模型虽然对 JavaScript 构成了很大的限制，但也因此使它具备了其他语言不具备的优势。如果用得好，JavaScript 程序是不会出现堵塞的，这就是为什么 Node 可以用很少的资源，应付大流量访问的原因。
 
@@ -47,8 +47,8 @@ function f1() {
 function f2() {
   // ...
 }
-f1();
-f2();
+f1()
+f2()
 ```
 
 上面代码的问题在于，如果`f1`是异步操作，`f2`会立即执行，不会等到`f1`结束再执行。
@@ -58,15 +58,15 @@ f2();
 ```js
 function f1(callback) {
   // ...
-  callback();
+  callback()
 }
 function f2() {
   // ...
 }
-f1(f2);
+f1(f2)
 ```
 
-回调函数的优点是简单、容易理解和实现，缺点是不利于代码的阅读和维护，各个部分之间高度[耦合](http://en.wikipedia.org/wiki/Coupling_(computer_programming))（coupling），使得程序结构混乱、流程难以追踪（尤其是多个回调函数嵌套的情况），而且每个任务只能指定一个回调函数。
+回调函数的优点是简单、容易理解和实现，缺点是不利于代码的阅读和维护，各个部分之间高度[耦合](<http://en.wikipedia.org/wiki/Coupling_(computer_programming)>)（coupling），使得程序结构混乱、流程难以追踪（尤其是多个回调函数嵌套的情况），而且每个任务只能指定一个回调函数。
 
 ### 事件监听
 
@@ -75,7 +75,7 @@ f1(f2);
 还是以`f1`和`f2`为例。首先，为`f1`绑定一个事件（这里采用的 jQuery 的[写法](http://api.jquery.com/on/)）。
 
 ```js
-f1.on('done', f2);
+f1.on('done', f2)
 ```
 
 上面这行代码的意思是，当`f1`发生`done`事件，就执行`f2`。然后，对`f1`进行改写：
@@ -84,8 +84,8 @@ f1.on('done', f2);
 function f1() {
   setTimeout(function () {
     // ...
-    f1.trigger('done');
-  }, 1000);
+    f1.trigger('done')
+  }, 1000)
 }
 ```
 
@@ -102,7 +102,7 @@ function f1() {
 首先，`f2`向信号中心`jQuery`订阅`done`信号。
 
 ```js
-jQuery.subscribe('done', f2);
+jQuery.subscribe('done', f2)
 ```
 
 然后，`f1`进行如下改写。
@@ -111,8 +111,8 @@ jQuery.subscribe('done', f2);
 function f1() {
   setTimeout(function () {
     // ...
-    jQuery.publish('done');
-  }, 1000);
+    jQuery.publish('done')
+  }, 1000)
 }
 ```
 
@@ -121,7 +121,7 @@ function f1() {
 `f2`完成执行后，可以取消订阅（unsubscribe）。
 
 ```js
-jQuery.unsubscribe('done', f2);
+jQuery.unsubscribe('done', f2)
 ```
 
 这种方法的性质与“事件监听”类似，但是明显优于后者。因为可以通过查看“消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行。
@@ -132,30 +132,32 @@ jQuery.unsubscribe('done', f2);
 
 ```js
 function async(arg, callback) {
-  console.log('参数为 ' + arg +' , 1秒后返回结果');
-  setTimeout(function () { callback(arg * 2); }, 1000);
+  console.log('参数为 ' + arg + ' , 1秒后返回结果')
+  setTimeout(function () {
+    callback(arg * 2)
+  }, 1000)
 }
 ```
 
-上面代码的`async`函数是一个异步任务，非常耗时，每次执行需要1秒才能完成，然后再调用回调函数。
+上面代码的`async`函数是一个异步任务，非常耗时，每次执行需要 1 秒才能完成，然后再调用回调函数。
 
 如果有六个这样的异步任务，需要全部完成后，才能执行最后的`final`函数。请问应该如何安排操作流程？
 
 ```js
 function final(value) {
-  console.log('完成: ', value);
+  console.log('完成: ', value)
 }
 async(1, function (value) {
   async(2, function (value) {
     async(3, function (value) {
       async(4, function (value) {
         async(5, function (value) {
-          async(6, final);
-        });
-      });
-    });
-  });
-});
+          async(6, final)
+        })
+      })
+    })
+  })
+})
 // 参数为 1 , 1秒后返回结果
 // 参数为 2 , 1秒后返回结果
 // 参数为 3 , 1秒后返回结果
@@ -172,26 +174,28 @@ async(1, function (value) {
 我们可以编写一个流程控制函数，让它来控制异步任务，一个任务完成以后，再执行另一个。这就叫串行执行。
 
 ```js
-var items = [ 1, 2, 3, 4, 5, 6 ];
-var results = [];
+var items = [1, 2, 3, 4, 5, 6]
+var results = []
 function async(arg, callback) {
-  console.log('参数为 ' + arg +' , 1秒后返回结果');
-  setTimeout(function () { callback(arg * 2); }, 1000);
+  console.log('参数为 ' + arg + ' , 1秒后返回结果')
+  setTimeout(function () {
+    callback(arg * 2)
+  }, 1000)
 }
 function final(value) {
-  console.log('完成: ', value);
+  console.log('完成: ', value)
 }
 function series(item) {
-  if(item) {
-    async( item, function(result) {
-      results.push(result);
-      return series(items.shift());
-    });
+  if (item) {
+    async(item, function (result) {
+      results.push(result)
+      return series(items.shift())
+    })
   } else {
-    return final(results[results.length - 1]);
+    return final(results[results.length - 1])
   }
 }
-series(items.shift());
+series(items.shift())
 ```
 
 上面代码中，函数`series`就是串行函数，它会依次执行异步任务，所有任务都完成后，才会执行`final`函数。`items`数组保存每一个异步任务的参数，`results`数组保存每一个异步任务的运行结果。
@@ -203,23 +207,25 @@ series(items.shift());
 流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行`final`函数。
 
 ```js
-var items = [ 1, 2, 3, 4, 5, 6 ];
-var results = [];
+var items = [1, 2, 3, 4, 5, 6]
+var results = []
 function async(arg, callback) {
-  console.log('参数为 ' + arg +' , 1秒后返回结果');
-  setTimeout(function () { callback(arg * 2); }, 1000);
+  console.log('参数为 ' + arg + ' , 1秒后返回结果')
+  setTimeout(function () {
+    callback(arg * 2)
+  }, 1000)
 }
 function final(value) {
-  console.log('完成: ', value);
+  console.log('完成: ', value)
 }
-items.forEach(function(item) {
-  async(item, function(result){
-    results.push(result);
-    if(results.length === items.length) {
-      final(results[results.length - 1]);
+items.forEach(function (item) {
+  async(item, function (result) {
+    results.push(result)
+    if (results.length === items.length) {
+      final(results[results.length - 1])
     }
   })
-});
+})
 ```
 
 上面代码中，`forEach`方法会同时发起六个异步任务，等到它们全部完成以后，才会执行`final`函数。
@@ -231,33 +237,35 @@ items.forEach(function(item) {
 所谓并行与串行的结合，就是设置一个门槛，每次最多只能并行执行`n`个异步任务，这样就避免了过分占用系统资源。
 
 ```js
-var items = [ 1, 2, 3, 4, 5, 6 ];
-var results = [];
-var running = 0;
-var limit = 2;
+var items = [1, 2, 3, 4, 5, 6]
+var results = []
+var running = 0
+var limit = 2
 function async(arg, callback) {
-  console.log('参数为 ' + arg +' , 1秒后返回结果');
-  setTimeout(function () { callback(arg * 2); }, 1000);
+  console.log('参数为 ' + arg + ' , 1秒后返回结果')
+  setTimeout(function () {
+    callback(arg * 2)
+  }, 1000)
 }
 function final(value) {
-  console.log('完成: ', value);
+  console.log('完成: ', value)
 }
 function launcher() {
-  while(running < limit && items.length > 0) {
-    var item = items.shift();
-    async(item, function(result) {
-      results.push(result);
-      running--;
-      if(items.length > 0) {
-        launcher();
-      } else if(running == 0) {
-        final(results);
+  while (running < limit && items.length > 0) {
+    var item = items.shift()
+    async(item, function (result) {
+      results.push(result)
+      running--
+      if (items.length > 0) {
+        launcher()
+      } else if (running == 0) {
+        final(results)
       }
-    });
-    running++;
+    })
+    running++
   }
 }
-launcher();
+launcher()
 ```
 
 上面代码中，最多只能同时运行两个异步任务。变量`running`记录当前正在运行的任务数，只要低于门槛值，就再启动一个新的任务，如果等于`0`，就表示所有任务都执行完了，这时就执行`final`函数。

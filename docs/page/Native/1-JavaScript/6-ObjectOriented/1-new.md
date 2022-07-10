@@ -30,8 +30,8 @@ JavaScript 语言使用构造函数（constructor）作为对象的模板。**�
 
 ```js
 var Vehicle = function () {
-  this.price = 1000;
-};
+  this.price = 1000
+}
 ```
 
 上面代码中，`Vehicle`就是构造函数。为了与普通函数区别，构造函数名字的第一个字母通常大写。
@@ -51,32 +51,32 @@ var Vehicle = function () {
 
 ```js
 var Vehicle = function () {
-  this.price = 1000;
-};
+  this.price = 1000
+}
 
-var v = new Vehicle();
+var v = new Vehicle()
 v.price // 1000
 ```
 
-上面代码通过`new`命令，让构造函数`Vehicle`生成一个实例对象，保存在变量`v`中。这个新生成的实例对象，从构造函数`Vehicle`得到了`price`属性。**`new`命令执行时，构造函数内部的`this`，就代表了新生成的实例对象**，`this.price`表示实例对象有一个`price`属性，值是1000。
+上面代码通过`new`命令，让构造函数`Vehicle`生成一个实例对象，保存在变量`v`中。这个新生成的实例对象，从构造函数`Vehicle`得到了`price`属性。**`new`命令执行时，构造函数内部的`this`，就代表了新生成的实例对象**，`this.price`表示实例对象有一个`price`属性，值是 1000。
 
 使用`new`命令时，根据需要，构造函数也可以接受参数。
 
 ```js
 var Vehicle = function (p) {
-  this.price = p;
-};
+  this.price = p
+}
 
-var v = new Vehicle(500);
+var v = new Vehicle(500)
 ```
 
 **`new`命令本身就可以执行构造函数，所以后面的构造函数可以带括号，也可以不带括号**。下面两行代码是等价的，但是为了表示这里是函数调用，推荐使用括号。（带括号可以传递参数）
 
 ```js
 // 推荐的写法
-var v = new Vehicle();
+var v = new Vehicle()
 // 不推荐的写法
-var v = new Vehicle;
+var v = new Vehicle()
 ```
 
 ::: tip
@@ -88,11 +88,11 @@ var v = new Vehicle;
 :::
 
 ```js
-var Vehicle = function (){
-  this.price = 1000;
-};
+var Vehicle = function () {
+  this.price = 1000
+}
 
-var v = Vehicle();
+var v = Vehicle()
 v // undefined
 price // 1000
 ```
@@ -102,10 +102,10 @@ price // 1000
 **为了保证构造函数必须与`new`命令一起使用，一个解决办法是，构造函数内部使用严格模式，即第一行加上`use strict`。这样的话，一旦忘了使用`new`命令，直接调用构造函数就会报错。**
 
 ```js
-function Fubar(foo, bar){
-  'use strict';
-  this._foo = foo;
-  this._bar = bar;
+function Fubar(foo, bar) {
+  'use strict'
+  this._foo = foo
+  this._bar = bar
 }
 
 Fubar()
@@ -127,19 +127,21 @@ Fubar()
 ```js
 function Fubar(foo, bar) {
   if (!(this instanceof Fubar)) {
-    return new Fubar(foo, bar);
+    return new Fubar(foo, bar)
   }
-  this._foo = foo;
-  this._bar = bar;
+  this._foo = foo
+  this._bar = bar
 }
 
-Fubar(1, 2)._foo // 1
-(new Fubar(1, 2))._foo // 1
+Fubar(1, 2)._foo(
+  // 1
+  new Fubar(1, 2)
+)._foo // 1
 ```
 
 上面代码中的构造函数，不管加不加`new`命令，都会得到同样的结果。
 
-### new 命令的原理（面试题）
+### new 命令的原理 <font color=red>（面试题）</font>
 
 使用`new`命令时，它后面的函数依次执行下面的步骤。
 
@@ -158,11 +160,11 @@ Fubar(1, 2)._foo // 1
 
 ```js
 var Vehicle = function () {
-  this.price = 1000;
-  return 1000;
-};
+  this.price = 1000
+  return 1000
+}
 
-(new Vehicle()) === 1000
+new Vehicle() === 1000
 // false
 ```
 
@@ -172,10 +174,10 @@ var Vehicle = function () {
 
 ```js
 function getMessage() {
-  return 'this is a message';
+  return 'this is a message'
 }
 
-var msg = new getMessage();
+var msg = new getMessage()
 
 msg // {}
 typeof msg // "object"
@@ -188,18 +190,18 @@ typeof msg // "object"
 ```js
 function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
   // 将 arguments 对象转为数组
-  var args = [].slice.call(arguments);
+  var args = [].slice.call(arguments)
   // 取出构造函数
-  var constructor = args.shift();
+  var constructor = args.shift()
   // 创建一个空对象，继承构造函数的 prototype 属性
-  var context = Object.create(constructor.prototype);
+  var context = Object.create(constructor.prototype)
   // 执行构造函数
-  var result = constructor.apply(context, args);
+  var result = constructor.apply(context, args)
   // 如果返回结果是对象，就直接返回，否则返回 context 对象
-  return (typeof result === 'object' && result != null) ? result : context;
+  return typeof result === 'object' && result != null ? result : context
 }
 // 实例
-var actor = _new(Person, '张三', 28);
+var actor = _new(Person, '张三', 28)
 ```
 
 ### new.target
@@ -208,7 +210,7 @@ var actor = _new(Person, '张三', 28);
 
 ```js
 function f() {
-  console.log(new.target === f);
+  console.log(new.target === f)
 }
 f() // false
 new f() // true
@@ -219,7 +221,7 @@ new f() // true
 ```js
 function f() {
   if (!new.target) {
-    throw new Error('请使用 new 命令调用！');
+    throw new Error('请使用 new 命令调用！')
   }
   // ...
 }
@@ -236,11 +238,11 @@ f() // Uncaught Error: 请使用 new 命令调用！
 var person1 = {
   name: '张三',
   age: 38,
-  greeting: function() {
-    console.log('Hi! I\'m ' + this.name + '.');
+  greeting: function () {
+    console.log("Hi! I'm " + this.name + '.')
   }
-};
-var person2 = Object.create(person1);
+}
+var person2 = Object.create(person1)
 person2.name // 张三
 person2.greeting() // Hi! I'm 张三.
 ```
