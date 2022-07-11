@@ -59,13 +59,26 @@ export default (function getJsonFiles() {
           const index = values.findIndex(i => i === path)
           item[key].some(e => {
             if (e === path && typeof e === 'string') {
-              const children = files
+              const ARR = files
                 .map(v => {
                   if (!/txt/.test(v)) {
                     return `/${path}\\${v}`.replace(/\\/g, '/')
                   }
                 })
                 .filter(v => v)
+              
+              // 排序
+              const children = ARR.sort((a, b) => {
+                const Arr = a.split('/').filter(FItem => FItem)
+                const Astr = +Arr[Arr.length - 1].split('-')[0]
+                const Brr = b.split('/').filter(FItem => FItem)
+                const Bstr = +Brr[Brr.length - 1].split('-')[0]
+                if(Bstr && Astr && Astr < Bstr){
+                    return -1
+                }
+                return 1
+              })
+              
               // 将README文件放在第一个
               const value = children.find(e => /README/g.test(e))
               if (value) {
