@@ -91,8 +91,8 @@ xhr.send(null);
 
 **`XMLHttpRequest.readyState`返回一个整数，表示实例对象的当前状态**。该属性只读。它可能返回以下值。
 
-- 0，表示 **XMLHttpRequest 实例已经生成**，但是实例的**`open()`方法还没有被调用**。
-- 1，表示**`open()`方法已经调用**，但是实例的**`send()`方法还没有调用**，仍然可以使用实例的`setRequestHeader()`方法，设定 HTTP 请求的头信息。
+- 0，表示 **XMLHttpRequest 实例已经生成**，但是实例的 **`open()`方法还没有被调用**。
+- 1，表示 **`open()`方法已经调用**，但是实例的 **`send()`方法还没有调用**， 仍然可以使用实例的`setRequestHeader()`方法，设定 HTTP 请求的头信息。
 - 2，**表示实例的`send()`方法已经调用，并且服务器返回的头信息和状态码已经收到。**
 - 3，**表示正在接收服务器传来的数据体<font color=red>（body 部分）</font>**。这时，如果实例的`responseType`属性等于`text`或者空字符串，`responseText`属性就会包含已经收到的部分信息。
 - 4，表示服务器返回的 **<font color=#42b983>数据已经完全接收</font>**，**<font color=red>或者本次接收已经失败</font>。**
