@@ -524,7 +524,7 @@ obj.next = 5;
 
 ::: tip
 
-`get next()`  /  `set next(n)` 这种写法叫 **<font color=red>存储器定义属性</font>**是在限制给 `obj` 对象指定属性时的一些判断和限制，这里就是在给 `obj` 对象添加 `next` 属性时候就限制他必须大于当前值
+`get next()`  /  `set next(n)` 这种写法叫 **<font color=red>存储器定义属性</font>** 是在限制给 `obj` 对象指定属性时的一些判断和限制，这里就是在给 `obj` 对象添加 `next` 属性时候就限制他必须大于当前值
 
 :::
 

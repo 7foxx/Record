@@ -287,7 +287,7 @@ str.split('').reverse().join('')
 
 **（5）实现了 Iterator 接口的对象**
 
-任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。
+**任何定义了遍历器（Iterator）接口的对象（参阅 Iterator 一章），都可以用扩展运算符转为真正的数组。**
 
 ```javascript
 let nodeList = document.querySelectorAll('div');

@@ -316,7 +316,7 @@ xhr.timeout = 10 * 1000;
 xhr.send(null);
 ```
 
-### 事件监听属性
+### 事件监听属性<font color=red>（重点）</font>
 
 XMLHttpRequest 对象可以对以下事件指定监听函数。
 
