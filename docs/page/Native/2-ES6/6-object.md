@@ -1,4 +1,4 @@
-# 对象的扩展
+# 对象的扩展<font color=red>（重点）</font>
 
 对象（object）是 JavaScript 最重要的数据结构。ES6 对它进行了重大升级，本章介绍数据结构本身的改变，下一章介绍`Object`对象的新增方法。
 
@@ -106,7 +106,7 @@ module.exports = {
 };
 ```
 
-属性的赋值器（setter）和取值器（getter），事实上也是采用这种写法。
+**属性的赋值器（setter）和取值器（getter），事实上也是采用这种写法。**
 
 ```javascript
 const cart = {
@@ -144,7 +144,11 @@ console.log({user, foo})
 
 上面代码中，`console.log`直接输出`user`和`foo`两个对象时，就是两组键值对，可能会混淆。把它们放在大括号里面输出，就变成了对象的简洁表示法，每组键值对前面会打印对象名，这样就比较清晰了。
 
-注意，简写的对象方法不能用作构造函数，会报错。
+::: warning
+
+**<font color=red>注意，简写的对象方法不能用作构造函数，会报错。</font>**
+
+:::
 
 ```javascript
 const obj = {
@@ -324,16 +328,16 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 //  }
 ```
 
-描述对象的`enumerable`属性，称为“可枚举性”，如果该属性为`false`，就表示某些操作会忽略当前属性。
+**描述对象的`enumerable`属性，称为“可枚举性”，如果该属性为`false`，就表示某些操作会忽略当前属性。**
 
-目前，有四个操作会忽略`enumerable`为`false`的属性。
+**目前，有四个操作会忽略`enumerable`为`false`的属性。**
 
 - `for...in`循环：只遍历对象自身的和继承的可枚举的属性。
 - `Object.keys()`：返回对象自身的所有可枚举的属性的键名。
 - `JSON.stringify()`：只串行化对象自身的可枚举的属性。
 - `Object.assign()`： 忽略`enumerable`为`false`的属性，只拷贝对象自身的可枚举的属性。
 
-这四个操作之中，前三个是 ES5 就有的，最后一个`Object.assign()`是 ES6 新增的。其中，只有`for...in`会返回继承的属性，其他三个方法都会忽略继承的属性，只处理对象自身的属性。实际上，引入“可枚举”（`enumerable`）这个概念的最初目的，就是让某些属性可以规避掉`for...in`操作，不然所有内部属性和方法都会被遍历到。比如，对象原型的`toString`方法，以及数组的`length`属性，就通过“可枚举性”，从而避免被`for...in`遍历到。
+这四个操作之中，前三个是 ES5 就有的，最后一个`Object.assign()`是 ES6 新增的。其中，只有`for...in`会返回继承的属性，其他三个方法都会忽略继承的属性，只处理对象自身的属性。实际上，**引入“可枚举”（`enumerable`）这个概念的最初目的，就是让某些属性可以规避掉`for...in`操作**，不然所有内部属性和方法都会被遍历到。比如，对象原型的`toString`方法，以及数组的`length`属性，就通过“可枚举性”，从而避免被`for...in`遍历到。
 
 ```javascript
 Object.getOwnPropertyDescriptor(Object.prototype, 'toString').enumerable
@@ -360,23 +364,23 @@ ES6 一共有 5 种方法可以遍历对象的属性。
 
 **（1）for...in**
 
-`for...in`循环遍历对象自身的和继承的可枚举属性（不含 Symbol 属性）。
+`for...in`循环遍历对象**自身的和继承的可枚举属性（不含 Symbol 属性）**。
 
 **（2）Object.keys(obj)**
 
-`Object.keys`返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）的键名。
+`Object.keys`返回一个数组，**包括对象自身的（不含继承的）所有可枚举属性（不含 Symbol 属性）** 的键名。
 
 **（3）Object.getOwnPropertyNames(obj)**
 
-`Object.getOwnPropertyNames`返回一个数组，包含对象自身的所有属性（不含 Symbol 属性，但是包括不可枚举属性）的键名。
+`Object.getOwnPropertyNames`返回一个数组，**包含对象自身的所有属性（不含 Symbol 属性，<font color=red>但是包括不可枚举属性</font>）** 的键名。
 
 **（4）Object.getOwnPropertySymbols(obj)**
 
-`Object.getOwnPropertySymbols`返回一个数组，包含对象自身的所有 Symbol 属性的键名。
+`Object.getOwnPropertySymbols`返回一个数组，**包含对象自身的所有 Symbol 属性的键名**。
 
 **（5）Reflect.ownKeys(obj)**
 
-`Reflect.ownKeys`返回一个数组，包含对象自身的（不含继承的）所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举。
+`Reflect.ownKeys`返回一个数组，**包含对象自身的（不含继承的）所有键名，不管键名是 Symbol 或字符串，<font color=red>也不管是否可枚举</font>**。
 
 以上的 5 种方法遍历对象的键名，都遵守同样的属性遍历的次序规则。
 
@@ -393,7 +397,7 @@ Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 
 ## super 关键字
 
-我们知道，`this`关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字`super`，指向当前对象的原型对象。
+**我们知道，`this`关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字`super`，<font color=red>指向当前对象的原型对象</font>。**
 
 ```javascript
 const proto = {
@@ -413,7 +417,7 @@ obj.find() // "hello"
 
 上面代码中，对象`obj.find()`方法之中，通过`super.foo`引用了原型对象`proto`的`foo`属性。
 
-注意，`super`关键字表示原型对象时，只能用在对象的方法之中，用在其他地方都会报错。
+**注意，`super`关键字表示原型对象时，只能用在对象的方法之中，用在其他地方都会报错。**
 
 ```javascript
 // 报错
@@ -434,7 +438,11 @@ const obj = {
 }
 ```
 
-上面三种`super`的用法都会报错，因为对于 JavaScript 引擎来说，这里的`super`都没有用在对象的方法之中。第一种写法是`super`用在属性里面，第二种和第三种写法是`super`用在一个函数里面，然后赋值给`foo`属性。目前，只有对象方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。
+上面三种`super`的用法都会报错，因为对于 JavaScript 引擎来说，这里的`super`都没有用在对象的方法之中。
+
+- 第一种写法是`super`用在属性里面。
+- 第二种和第三种写法是`super`用在一个函数里面，然后赋值给`foo`属性。
+- 目前，**只有对象方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。**
 
 JavaScript 引擎内部，`super.foo`等同于`Object.getPrototypeOf(this).foo`（属性）或`Object.getPrototypeOf(this).foo.call(this)`（方法）。
 

@@ -1,4 +1,4 @@
-# 数组的扩展
+# 数组的扩展<font color=red>（重点）</font>
 
 ## 扩展运算符
 
@@ -646,7 +646,7 @@ let person = {name: 'John', age: 20};
 
 上面代码中，`indexOf()`方法无法识别数组的`NaN`成员，但是`findIndex()`方法可以借助`Object.is()`方法做到。
 
-`find()`和`findIndex()`都是从数组的0号位，依次向后检查。[ES2022](https://github.com/tc39/proposal-array-find-from-last) 新增了两个方法`findLast()`和`findLastIndex()`，从数组的最后一个成员开始，依次向前检查，其他都保持不变。
+**`find()`和`findIndex()`都是从数组的0号位，依次向后检查。<font color=red>[ES2022](https://github.com/tc39/proposal-array-find-from-last) 新增了两个方法`findLast()`和`findLastIndex()`，从数组的最后一个成员开始，依次向前检查，其他都保持不变。</font>**
 
 ```javascript
 const array = [
@@ -701,7 +701,13 @@ arr
 
 ## 实例方法：entries()，keys() 和 values()
 
-ES6 提供三个新的方法——`entries()`，`keys()`和`values()`——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用`for...of`循环进行遍历，唯一的区别是`keys()`是对键名的遍历、`values()`是对键值的遍历，`entries()`是对键值对的遍历。
+ES6 提供三个新的方法——`entries()`，`keys()`和`values()`——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用`for...of`循环进行遍历。
+
+唯一的区别是
+
+- `keys()`是对键名的遍历
+- `values()`是对键值的遍历
+- `entries()`是对键值对的遍历
 
 ```javascript
 for (let index of ['a', 'b'].keys()) {
@@ -799,7 +805,7 @@ contains(['foo', 'bar'], 'baz'); // => false
 
 上面代码中，原数组的成员里面有一个数组，`flat()`方法将子数组的成员取出来，添加在原来的位置。
 
-`flat()`默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，可以将`flat()`方法的参数写成一个整数，表示想要拉平的层数，默认为1。
+**`flat()`默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，可以将`flat()`方法的参数写成一个整数，表示想要拉平的层数，默认为1。**
 
 ```javascript
 [1, 2, [3, [4, 5]]].flat()
@@ -825,7 +831,7 @@ contains(['foo', 'bar'], 'baz'); // => false
 // [1, 2, 4, 5]
 ```
 
-`flatMap()`方法对原数组的每个成员执行一个函数（相当于执行`Array.prototype.map()`），然后对返回值组成的数组执行`flat()`方法。该方法返回一个新数组，不改变原数组。
+**`flatMap()`方法对原数组的每个成员执行一个函数（相当于执行`Array.prototype.map()`），然后对返回值组成的数组执行`flat()`方法。该方法返回一个新数组，不改变原数组。**
 
 ```javascript
 // 相当于 [[2, 4], [3, 6], [4, 8]].flat()
@@ -976,7 +982,7 @@ Array(3) // [, , ,]
 
 上面代码中，`Array(3)`返回一个具有 3 个空位的数组。
 
-注意，空位不是`undefined`，某一个位置的值等于`undefined`，依然是有值的。空位是没有任何值，`in`运算符可以说明这一点。
+**注意，空位不是`undefined`，某一个位置的值等于`undefined`，依然是有值的。空位是没有任何值，`in`运算符可以说明这一点。**
 
 ```javascript
 0 in [undefined, undefined, undefined] // true
@@ -985,7 +991,7 @@ Array(3) // [, , ,]
 
 上面代码说明，第一个数组的 0 号位置是有值的，第二个数组的 0 号位置没有值。
 
-ES5 对空位的处理，已经很不一致了，大多数情况下会忽略空位。
+**ES5 对空位的处理，已经很不一致了，大多数情况下会忽略空位。**
 
 - `forEach()`, `filter()`, `reduce()`, `every()` 和`some()`都会跳过空位。
 - `map()`会跳过空位，但会保留这个值

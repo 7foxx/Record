@@ -1,10 +1,10 @@
-# Proxy
+# Proxy<font color=red>（重点）</font>
 
 ## 概述
 
 Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 
-Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
+Proxy 可以理解成，**在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截**，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为**<font color=red>“代理器”</font>**。
 
 ```javascript
 var obj = new Proxy({}, {
@@ -145,7 +145,7 @@ fproxy.foo === "Hello, foo" // true
 
 ### get()
 
-`get`方法用于拦截某个属性的读取操作，可以接受三个参数，依次为目标对象、属性名和 proxy 实例本身（严格地说，是操作行为所针对的对象），其中最后一个参数可选。
+**`get`方法用于拦截某个属性的读取操作**，可以接受**三个参数**，依次为**目标对象、属性名和 proxy 实例本身**（严格地说，是操作行为所针对的对象），其中最后一个参数可选。
 
 `get`方法的用法，上文已经有一个例子，下面是另一个拦截读取操作的例子。
 
@@ -326,7 +326,7 @@ proxy.foo
 
 ### set()
 
-`set`方法用来拦截某个属性的赋值操作，可以接受四个参数，依次为目标对象、属性名、属性值和 Proxy 实例本身，其中最后一个参数可选。
+**`set`方法用来拦截某个属性的赋值操作**，可以接受**四个参数**，依次为**目标对象、属性名、属性值和 Proxy 实例本身，**其中最后一个参数可选。
 
 假定`Person`对象有一个`age`属性，该属性应该是一个不大于 200 的整数，那么可以使用`Proxy`保证`age`的属性值符合要求。
 
@@ -464,9 +464,9 @@ proxy.foo = 'bar';
 
 ### apply()
 
-`apply`方法拦截函数的调用、`call`和`apply`操作。
+**`apply`方法拦截函数的调用、`call`和`apply`操作**。
 
-`apply`方法可以接受三个参数，分别是目标对象、目标对象的上下文对象（`this`）和目标对象的参数数组。
+`apply`方法可以接受**三个参数**，分别是**目标对象、目标对象的上下文对象（`this`）和目标对象的参数数组**。
 
 ```javascript
 var handler = {
@@ -560,7 +560,7 @@ var p = new Proxy(obj, {
 
 上面代码中，`obj`对象禁止扩展，结果使用`has`拦截就会报错。也就是说，如果某个属性不可配置（或者目标对象不可扩展），则`has()`方法就不得“隐藏”（即返回`false`）目标对象的该属性。
 
-值得注意的是，`has()`方法拦截的是`HasProperty`操作，而不是`HasOwnProperty`操作，即`has()`方法不判断一个属性是对象自身的属性，还是继承的属性。
+**值得注意的是，`has()`方法拦截的是`HasProperty`操作，而不是`HasOwnProperty`操作，即`has()`方法不判断一个属性是对象自身的属性，还是继承的属性。**
 
 另外，虽然`for...in`循环也用到了`in`运算符，但是`has()`拦截对`for...in`循环不生效。
 
@@ -605,7 +605,7 @@ for (let b in oproxy2) {
 
 ### construct()
 
-`construct()`方法用于拦截`new`命令，下面是拦截对象的写法。
+**`construct()`方法用于拦截`new`命令，下面是拦截对象的写法。**
 
 ```javascript
 const handler = {
@@ -662,7 +662,11 @@ new p() // 报错
 
 上面例子中，拦截的目标对象不是一个函数，而是一个对象（`new Proxy()`的第一个参数），导致报错。
 
-注意，`construct()`方法中的`this`指向的是`handler`，而不是实例对象。
+::: warning
+
+**注意，`construct()`方法中的`this`指向的是`handler`，而不是实例对象。**
+
+:::
 
 ```javascript
 const handler = {
@@ -678,7 +682,7 @@ new p() // true
 
 ### deleteProperty()
 
-`deleteProperty`方法用于拦截`delete`操作，如果这个方法抛出错误或者返回`false`，当前属性就无法被`delete`命令删除。
+**`deleteProperty`方法用于拦截`delete`操作，如果这个方法抛出错误或者返回`false`，当前属性就无法被`delete`命令删除。**
 
 ```javascript
 var handler = {
@@ -702,11 +706,15 @@ delete proxy._prop
 
 上面代码中，`deleteProperty`方法拦截了`delete`操作符，删除第一个字符为下划线的属性会报错。
 
-注意，目标对象自身的不可配置（configurable）的属性，不能被`deleteProperty`方法删除，否则报错。
+::: warning
+
+**注意，目标对象自身的不可配置（configurable）的属性，不能被`deleteProperty`方法删除，否则报错。**
+
+:::
 
 ### defineProperty()
 
-`defineProperty()`方法拦截了`Object.defineProperty()`操作。
+**`defineProperty()`方法拦截了`Object.defineProperty()`操作。**
 
 ```javascript
 var handler = {
@@ -721,11 +729,15 @@ proxy.foo = 'bar' // 不会生效
 
 上面代码中，`defineProperty()`方法内部没有任何操作，只返回`false`，导致添加新属性总是无效。注意，这里的`false`只是用来提示操作失败，本身并不能阻止添加新属性。
 
-注意，如果目标对象不可扩展（non-extensible），则`defineProperty()`不能增加目标对象上不存在的属性，否则会报错。另外，如果目标对象的某个属性不可写（writable）或不可配置（configurable），则`defineProperty()`方法不得改变这两个设置。
+::: warning
+
+**注意，如果目标<font color=red>对象不可扩展</font>（non-extensible），则`defineProperty()`<font color=red>不能增加目标对象上不存在的属性</font>，否则会报错。另外，如果目标对象的某个<font color=red>属性不可写</font>（writable）<font color=red>或不可配置</font>（configurable），则`defineProperty()`<font color=red>方法不得改变这两个设置</font>。**
+
+:::
 
 ### getOwnPropertyDescriptor()
 
-`getOwnPropertyDescriptor()`方法拦截`Object.getOwnPropertyDescriptor()`，返回一个属性描述对象或者`undefined`。
+**`getOwnPropertyDescriptor()`方法拦截`Object.getOwnPropertyDescriptor()`，返回一个属性描述对象或者`undefined`。**
 
 ```javascript
 var handler = {
@@ -750,7 +762,7 @@ Object.getOwnPropertyDescriptor(proxy, 'baz')
 
 ### getPrototypeOf()
 
-`getPrototypeOf()`方法主要用来拦截获取对象原型。具体来说，拦截下面这些操作。
+**`getPrototypeOf()`方法主要用来拦截获取对象原型。具体来说，拦截下面这些操作。**
 
 - `Object.prototype.__proto__`
 - `Object.prototype.isPrototypeOf()`
@@ -772,11 +784,14 @@ Object.getPrototypeOf(p) === proto // true
 
 上面代码中，`getPrototypeOf()`方法拦截`Object.getPrototypeOf()`，返回`proto`对象。
 
-注意，`getPrototypeOf()`方法的返回值必须是对象或者`null`，否则报错。另外，如果目标对象不可扩展（non-extensible）， `getPrototypeOf()`方法必须返回目标对象的原型对象。
+::: warning
+
+**注意，`getPrototypeOf()`方法的<font color=red>返回值必须是对象或者`null`</font>，否则报错。另外，<font color=red>如果目标对象不可扩展</font>（non-extensible）， `getPrototypeOf()`方法<font color=red>必须返回目标对象的原型对象。</font>**
+:::
 
 ### isExtensible()
 
-`isExtensible()`方法拦截`Object.isExtensible()`操作。
+**`isExtensible()`方法拦截`Object.isExtensible()`操作。**
 
 ```javascript
 var p = new Proxy({}, {
@@ -816,7 +831,7 @@ Object.isExtensible(p)
 
 ### ownKeys()
 
-`ownKeys()`方法用来拦截对象自身属性的读取操作。具体来说，拦截以下操作。
+**`ownKeys()`方法用来拦截对象自身属性的读取操作。具体来说，拦截以下操作。**
 
 - `Object.getOwnPropertyNames()`
 - `Object.getOwnPropertySymbols()`
