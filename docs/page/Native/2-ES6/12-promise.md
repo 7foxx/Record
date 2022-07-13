@@ -573,7 +573,7 @@ Promise.reject(3).finally(() => {})
 const p = Promise.all([p1, p2, p3]);
 ```
 
-上面代码中，`Promise.all()`方法接受一个数组作为参数，`p1`、`p2`、`p3`都是 Promise 实例，如果不是，就会先调用下面讲到的`Promise.resolve`方法，将参数转为 Promise 实例，再进一步处理。另外，`Promise.all()`方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。
+**上面代码中，`Promise.all()`方法接受一个数组作为参数，`p1`、`p2`、`p3`都是 Promise 实例，如果不是，就会先调用下面讲到的`Promise.resolve`方法，将参数转为 Promise 实例，再进一步处理。另外，`Promise.all()`方法的参数可以不是数组，但<font color=red>必须具有 Iterator 接口</font>，且返回的每个成员都是 Promise 实例。**
 
 `p`的状态由`p1`、`p2`、`p3`决定，分成两种情况。
 
@@ -668,9 +668,9 @@ Promise.all([p1, p2])
 const p = Promise.race([p1, p2, p3]);
 ```
 
-上面代码中，只要`p1`、`p2`、`p3`之中有一个实例率先改变状态，`p`的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给`p`的回调函数。
+上面代码中，**只要`p1`、`p2`、`p3`之中有一个实例率先改变状态，`p`的状态就跟着改变。**那个率先改变的 Promise 实例的返回值，就传递给`p`的回调函数。
 
-`Promise.race()`方法的参数与`Promise.all()`方法一样，如果不是 Promise 实例，就会先调用下面讲到的`Promise.resolve()`方法，将参数转为 Promise 实例，再进一步处理。
+**`Promise.race()`方法的参数与`Promise.all()`方法一样，如果不是 Promise 实例，就会先调用下面讲到的`Promise.resolve()`方法，将参数转为 Promise 实例，再进一步处理。**
 
 下面是一个例子，如果指定时间内没有获得结果，就将 Promise 的状态变为`reject`，否则变为`resolve`。
 
@@ -689,9 +689,9 @@ p
 
 上面代码中，如果 5 秒之内`fetch`方法无法返回结果，变量`p`的状态就会变为`rejected`，从而触发`catch`方法指定的回调函数。
 
-## Promise.allSettled()
+## Promise.allSettled()<font color=red>（面试题）</font>
 
-有时候，我们希望等到一组异步操作都结束了，不管每一个操作是成功还是失败，再进行下一步操作。但是，现有的 Promise 方法很难实现这个要求。
+**有时候，我们希望等到一组异步操作都结束了，不管每一个操作是成功还是失败，再进行下一步操作。**但是，现有的 Promise 方法很难实现这个要求。
 
 `Promise.all()`方法只适合所有异步操作都成功的情况，如果有一个操作失败，就无法满足要求。
 
@@ -711,7 +711,7 @@ try {
 
 为了解决这个问题，[ES2020](https://github.com/tc39/proposal-promise-allSettled) 引入了`Promise.allSettled()`方法，用来确定一组异步操作是否都结束了（不管成功或失败）。所以，它的名字叫做”Settled“，包含了”fulfilled“和”rejected“两种情况。
 
-`Promise.allSettled()`方法接受一个数组作为参数，数组的每个成员都是一个 Promise 对象，并返回一个新的 Promise 对象。只有等到参数数组的所有 Promise 对象都发生状态变更（不管是`fulfilled`还是`rejected`），返回的 Promise 对象才会发生状态变更。
+**`Promise.allSettled()`方法接受一个数组作为参数，数组的每个成员都是一个 Promise 对象，并返回一个新的 Promise 对象**。只有等到参数数组的所有 Promise 对象**<font color=red>都发生状态变更</font>**（不管是`fulfilled`还是`rejected`），返回的 Promise 对象才会发生状态变更。
 
 ```javascript
 const promises = [
@@ -832,7 +832,7 @@ Promise.any([rejected, alsoRejected]).catch(function (results) {
 
 ## Promise.resolve()
 
-有时需要将现有对象转为 Promise 对象，`Promise.resolve()`方法就起到这个作用。
+**有时需要将现有对象转为 Promise 对象，`Promise.resolve()`方法就起到这个作用。**
 
 ```javascript
 const jsPromise = Promise.resolve($.ajax('/whatever.json'));
