@@ -1,10 +1,10 @@
-# async 函数
+# async 函数<font color=red>（重点）</font>
 
 ## 含义
 
 ES2017 标准引入了 async 函数，使得异步操作变得更加方便。
 
-async 函数是什么？一句话，它就是 Generator 函数的语法糖。
+**async 函数是什么？一句话，它就是 Generator 函数的语法糖。**
 
 前文有一个 Generator 函数，依次读取两个文件。
 
@@ -41,7 +41,7 @@ const asyncReadFile = async function () {
 
 一比较就会发现，`async`函数就是将 Generator 函数的星号（`*`）替换成`async`，将`yield`替换成`await`，仅此而已。
 
-`async`函数对 Generator 函数的改进，体现在以下四点。
+**`async`函数对 Generator 函数的改进，体现在以下四点。**
 
 （1）内置执行器。
 
@@ -285,7 +285,7 @@ f()
 
 注意，上面代码中，`await`语句前面没有`return`，但是`reject`方法的参数依然传入了`catch`方法的回调函数。这里如果在`await`前面加上`return`，效果是一样的。
 
-任何一个`await`语句后面的 Promise 对象变为`reject`状态，那么整个`async`函数都会中断执行。
+**任何一个`await`语句后面的 Promise 对象变为`reject`状态，那么整个`async`函数都会中断执行。**
 
 ```javascript
 async function f() {
@@ -733,7 +733,7 @@ const data = await fetch('https://api.example.com');
 
 上面代码中，`await`命令独立使用，没有放在 async 函数里面，就会报错。
 
-从 [ES2022](https://github.com/tc39/proposal-top-level-await) 开始，允许在模块的顶层独立使用`await`命令，使得上面那行代码不会报错了。它的主要目的是使用`await`解决模块异步加载的问题。
+从 [ES2022](https://github.com/tc39/proposal-top-level-await) 开始，**允许在模块的顶层独立使用`await`命令，使得上面那行代码不会报错了**。它的主要目的是使用`await`解决模块异步加载的问题。
 
 ```javascript
 // awaiting.js
