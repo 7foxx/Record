@@ -77,7 +77,7 @@ new Boolean(true).toString() // "true"
 'abc'.length // 3
 ```
 
-上面代码中，`abc`是一个字符串，本身不是对象，不能调用`length`属性。**JavaScript 引擎自动将其转为包装对象，在这个对象上调用`length`属性。调用结束后，这个临时对象就会被销毁**。这就叫原始类型与实例对象的自动转换。
+上面代码中，`abc`是一个字符串，本身不是对象，不能调用`length`属性。**JavaScript 引擎自动将其转为包装对象，在这个对象上调用`length`属性。<font color=red>调用结束后，这个临时对象就会被销毁</font>**。这就叫原始类型与实例对象的自动转换。
 
 ```js
 var str = 'abc'
