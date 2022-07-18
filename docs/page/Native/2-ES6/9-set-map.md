@@ -999,9 +999,9 @@ wm.get(element) // "some information"
 
 也就是说，上面的 DOM 节点对象除了 WeakMap 的弱引用外，其他位置对该对象的引用一旦消除，该对象占用的内存就会被垃圾回收机制释放。WeakMap 保存的这个键值对，也会自动消失。
 
-总之，`WeakMap`的专用场合就是，它的键所对应的对象，可能会在将来消失。`WeakMap`结构有助于防止内存泄漏。
+**总之，`WeakMap`的专用场合就是，它的键所对应的对象，可能会在将来消失。`WeakMap`结构有助于防止内存泄漏。**
 
-注意，WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用。
+**注意，WeakMap <font color=red>弱引用的只是键名，而不是键值</font>。键值依然是正常引用。**
 
 ```javascript
 const wm = new WeakMap();
