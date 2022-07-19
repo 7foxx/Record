@@ -4,10 +4,10 @@ title: 首页
 heroImage: /logo.svg
 actions:
   - text: Record
-    link: /page/TheProblem/A-Preface
+    link: /page/Record/0-Preface
     type: secondary
   - text: 面试题 →
-    link: '/page/TheInterview/A-Preface'
+    link: '/page/TheInterview/0-Preface'
     type: primary
 # features:
 #   - title: 💡 最新最热的技术
@@ -16,5 +16,5 @@ actions:
 #     details: 从基础配置，到高级优化，到项目配置，最后到原理分析
 #   - title: 📦 最全面的案例
 #     details: 不同角度实现loader、plugin
-# footer: MIT Licensed | Copyright © 2022-present
+footer: MIT Licensed | Copyright © 2022-present
 ---

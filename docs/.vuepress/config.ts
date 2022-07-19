@@ -7,7 +7,7 @@ export default defineUserConfig({
   title: '你好， 打工人 ！',
   port: 8082,
   open: true,
-  // description: '这是我的第一个 VuePress 站点',
+  description: 'Help every worker！！！',
   theme: defaultTheme({
     // 默认主题配置
     navbar: [
