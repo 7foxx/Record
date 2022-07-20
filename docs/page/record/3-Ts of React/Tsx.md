@@ -4,9 +4,9 @@
 
 **原因：**
 
-在自己搭建的 `Webpack` 中 如果没有配置 `JSX.IntrinsicElements` 接口是无法使用的
+在自己搭建的 `Webpack` 中 如果没有配置 `JSX.IntrinsicElements` 接口是无法在 `tsx` 文件中使用的。
 
-如果是在 `React`  的脚手架搭建的项目他会自动配置好的所以不会报错
+如果是在 `React`  的脚手架搭建的项目他会自动配置好的所以不会报错。
 
 **解决：**
 
@@ -29,7 +29,7 @@ declare namespace JSX {
 
 **方案二**
 
-简单粗暴
+简单粗暴，不过这样只是解决了问题原因，并没有达到最终的目的。
 
 ```sh
 yarn add @types/react

@@ -724,6 +724,8 @@ headAndTail(1, 2, 3, 4, 5)
 
 （4）不可以使用`yield`命令，因此箭头函数不能用作 Generator 函数。
 
+（5）**无法直接通过 `prototype` 属性获取原型对象（而并非没有原型对象）**。
+
 **上面四点中，<font color=red>最重要的是第一点</font>。对于普通函数来说，内部的`this`指向函数运行时所在的对象，但是这一点对箭头函数不成立。它没有自己的`this`对象，内部的`this`就是定义时上层作用域中的`this`。也就是说，<font color=red>箭头函数内部的`this`指向是固定的</font>，相比之下，<font color=red>普通函数的`this`指向是可变的</font>。**
 
 ```javascript
