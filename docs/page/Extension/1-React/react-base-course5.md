@@ -74,7 +74,7 @@
 }
 ```
 
-<img src="/resource/images/hook.gif"/>
+![hook](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210934332.gif)
 
 -   相比于函数组件来说，类组件不利于代码压缩和优化，也不利于 TS 的类型推导。
 
@@ -135,11 +135,11 @@ Hooks 解决了什么问题？
 
 ### 内容
 
-<font color=e32d40>**作用：为函数组件提供状态和修改状态的方法。**</font>
+**<font color=e32d40>作用：为函数组件提供状态和修改状态的方法。</font>**
 
 ### 需求
 
-<img src="/resource/images/ifer_calc.png"/>
+![ifer_calc](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210935056.gif)
 
 1. 导入 `useState` 函数。
 
@@ -266,7 +266,7 @@ export default App
 
     4. 再次渲染组件，此时，获取到的状态 count 值为：1。
 
--   <font color=e32d40>**强调：useState 的初始值(参数)只会在组件第一次渲染时生效**</font>，也就是说，以后的每次渲染，useState 获取到都是最新的状态值，React 组件内部会记住每次更新后的最新状态值!
+-   **<font color=e32d40>强调：useState 的初始值(参数)只会在组件第一次渲染时生效</font>**，也就是说，以后的每次渲染，useState 获取到都是最新的状态值，React 组件内部会记住每次更新后的最新状态值!
 
 ## useState 另一种写法
 
@@ -415,8 +415,6 @@ useEffect(() => {})
 在实际开发中，副作用是不可避免的。
 
 📝 需求：点击按钮，让数字加 1，并把变化后的数字展示在网页标题上。
-
-<img src="/resource/images/ifer_useEffect.gif" class="highlight2"/>
 
 ### 步骤
 
@@ -593,7 +591,7 @@ useEffect(() => {}, [count])
 
 把前面学习的两个 Hook 结合起来使用，完成打开页面进行倒计时的效果。
 
-<img src="/resource/images/djs.gif"/>
+![djs](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210936969.gif)
 
 ### 一个问题
 
@@ -674,7 +672,7 @@ export default function App() {
 
 ### 目标
 
-<img src="/resource/images/ifer_cart.png" width="300" class="highlight2"/>
+![ifer_cart](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210936557.png)
 
 ### 基本步骤
 

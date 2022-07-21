@@ -1,4 +1,4 @@
-# TS进阶
+# TypeScript 进阶
 
 ## seState
 
@@ -836,7 +836,7 @@ const handleDel = (id: number) => {
 
 ### ThunkAction
 
-<font color=e32d40>**问题：如何处理 todoDelAsync 返回值的类型？**</font>
+问题：<font color=e32d40>**如何处理 todoDelAsync 返回值的类型？**</font>
 
 -   ThunkAction 类型的使用，[参考文档](https://redux.js.org/usage/usage-with-typescript#type-checking-redux-thunks)。
 

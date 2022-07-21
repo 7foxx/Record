@@ -20,7 +20,7 @@
 
 了解为什么需要组件通讯？
 
-<img src="/resource/images/ifer_search.png" class="highlight2"/>
+![ifer_search](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210920344.png)
 
 ### 内容
 
@@ -44,12 +44,6 @@
 
 掌握如何将父组件的数据，传递给子组件。
 
-### 需求
-
-<img src="/resource/images/ifer_p_c2.png"/>
-
-### 内容
-
 🤔 [Vue 是怎么做的？](https://cn.vuejs.org/v2/guide/components.html#%E9%80%9A%E8%BF%87-Prop-%E5%90%91%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE)
 
 1. 父组件（使用组件的地方）通过自定义属性提供数据。
@@ -67,7 +61,7 @@ class Parent extends Component {
     render() {
         return (
             <div style={{ border: '1px solid gray', padding: 20, width: 300 }}>
-                <h3>父：黑马武汉前端 64 期平均工资</h3>
+                <h3>父：武汉前端平均工资</h3>
                 <Child salary={this.state.salary}></Child>
             </div>
         )
@@ -169,7 +163,7 @@ export default class App extends Component {
 
 ### 目标
 
-<img src="/resource/images/ifer_p_c.png" width="400"/>
+![ifer_p_c](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210923498.png)
 
 ### 准备父组件
 
@@ -378,7 +372,7 @@ export default class Child extends Component {
 
 ### 内容
 
-<img src="/resource/images/ifer_at.png"/>
+![ifer_at](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210925980.png)
 
 a，父组件通过属性传递一个回调函数。
 
@@ -440,7 +434,7 @@ class Hello extends React.Component {
 
 ### 目标
 
-<img src="/resource/images/ifer_kyd.png" width="400"/>
+![ifer_p_c](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210925528.png)
 
 ### 思路
 
@@ -671,7 +665,7 @@ export default class Child extends Component {
 
 需求：点击 A 中的按钮，修改 B 中的数据 count。
 
-<img src="/resource/images/ifer_brother.png"/>
+![ifer_brother](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210926209.png)
 
 ### 步骤
 
@@ -679,7 +673,7 @@ export default class Child extends Component {
 
 2. 把需要操作的 B 组件中的数据 count 提升到公共的父组件里面。
 
-3. <font color=e32d40>**父组件提供数据和操作数据的方法**</font>。
+3. 在<font color=e32d40>**父组件提供数据和操作数据的方法**</font>。
 
 4. 把数据传递给 B 组件，把操作数据的方法传递给 A 组件。
 
@@ -757,7 +751,7 @@ export default class B extends Component {
 
 ### 步骤
 
-<img src="/resource/images/ifer_context.png"/>
+![ifer_context](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210926536.png)
 
 1. 祖先组件通过 `React.crateContext()` 创建 Context 并导出。
 
@@ -885,7 +879,7 @@ export const Context = React.createContext({
     <strong>组件化开发</strong>
 </div>
 
-<img src="/resource/images/ifer_list.png" class="highlight2"/>
+![image-20220720214418918](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210930193.png)
 
 ### 组件拆分
 

@@ -38,7 +38,7 @@
 
 -   使用 React 路由简单来说就是：配置路径和组件（配对）。
 
-<img src="/resource/images/ifer_router.png"/>
+![ifer_router](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210946351.png)
 
 ## 模拟 Hash 路由
 
@@ -46,7 +46,7 @@
 
 📝 需求：点击链接显示对应的组件。
 
-<img src="/resource/images/ifer_router_hash.png" class="highlight2"/>
+![ifer_router_hash](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210950287.png)
 
 ### 静态结构
 
@@ -681,7 +681,7 @@ export default function SongList(props) {
 
 ## 动态路由传参
 
-<img src="/resource/images/ifer_cc.png" class="highlight2"/>
+![ifer_cc](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210951734.png)
 
 ### 语法要求
 

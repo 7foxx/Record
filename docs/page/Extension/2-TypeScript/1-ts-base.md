@@ -1,4 +1,4 @@
-# TypeScript 基础语法
+# TypeScript 基础
 
 ![TS是JS的超集](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207202053431.png)
 

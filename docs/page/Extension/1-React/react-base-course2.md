@@ -568,11 +568,11 @@ console.log(app1.handleClick === app2.handleClick)
 
 所以，要明白在 class 中直接写的方法和通过赋值语句添加的方法本质上不一样。
 
-<font color=e32d40>**注意：在 constructor 中挂载的方法也是实例方法。**</font>
+**<font color=e32d40>注意：在 constructor 中挂载的方法也是实例方法。</font>**
 
 ### 方法 4
 
-<font color=e32d40>通过赋值语句往**实例**上面添加一个箭头函数。</font>
+通过赋值语句往<font color=e32d40>**实例**</font>上面添加一个箭头函数。
 
 ```jsx
 class App extends Component {

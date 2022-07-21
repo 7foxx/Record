@@ -56,11 +56,11 @@ function Hello(props) {
 
 -   校验前
 
-<img src="/resource/images/ifer_props.png"/>
+![ifer_props](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210931617.png)
 
 -   校验后
 
-<img src="/resource/images/ifer_error.png"/>
+![ifer_error](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210931411.png)
 
 ### 如何对 props 进行校验
 
@@ -253,15 +253,15 @@ export default Test
 
 -   生命周期钩子函数的作用：为开发人员在不同阶段操作组件提供了时机。
 
--   <font color=e32d40>**只有类组件才有生命周期。**</font>
+-   **<font color=e32d40>只有类组件才有生命周期。</font>**
 
-<img src="/resource/images/ifer_life2.png"/>
+![ifer_life2](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210931601.png)
 
 ### React 生命周期
 
 [生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-<img src="/resource/images/react_life.png"/>
+![ifer_life_new](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210932364.png)
 
 ### 小结
 
@@ -537,7 +537,7 @@ console.log(this.state.count) // 依然是 1
 
 ### 需求
 
-<img src="/resource/images/ifer_setState.png"/>
+![ifer_setState](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210932925.png)
 
 ### 步骤
 
@@ -632,7 +632,7 @@ export default class App extends Component {
 
 [效果](https://todomvc.com/examples/react/#/)
 
-<img src="/resource/images/todolist.png" width="400" class="highlight2" />
+![ifer_todo](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210933854.png)
 
 ### 模拟接口
 
@@ -680,7 +680,7 @@ PATCH  /todos/1
 DELETE /todos/1
 ```
 
-<font color=#e32d40>**PUT 和 PATCH 的差异**</font>
+**<font color=#e32d40>PUT 和 PATCH 的差异</font>**
 
 PUT 是全量修改，修改了数据中的某一项也要把其他的数据带过去，不然其他的数据会被干掉，PATCH 是补丁，传递什么只会修改什么。
 

@@ -279,7 +279,7 @@ useEffect(() => {
 
 ### 演示发请求
 
-<img src="/resource/images/ifer_ajax.png"/>
+![ifer_ajax](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207210938825.png)
 
 1. 准备初始状态 list 和修改状态的方法 setList。
 
@@ -473,8 +473,6 @@ export default function App() {
 ### 全局变量的问题
 
 多个组件实例之间会共用一个全局变量，以至于会相互影响，可以通过以下代码验证。
-
-<img src="/resource/images/qj.png"/>
 
 ```js
 import React from 'react'
