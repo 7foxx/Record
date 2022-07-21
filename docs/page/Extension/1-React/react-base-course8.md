@@ -52,7 +52,7 @@
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 
 export default function App() {
@@ -109,7 +109,7 @@ export default function App() {
 
 `App.js`
 
-```js
+```jsx
 import React, { useEffect, useState } from 'react'
 import FindMusic from './pages/FindMusic'
 import MyMusic from './pages/MyMusic'
@@ -193,7 +193,7 @@ yarn add react-router-dom@5.3.0
 
 2. `react-router-dom` 这个包提供了三个核心的组件。
 
-```js
+```jsx
 import { HashRouter, Route, Link } from 'react-router-dom'
 ```
 
@@ -207,7 +207,7 @@ import { HashRouter, Route, Link } from 'react-router-dom'
 
 4. 使用 Link 指定导航链接。
 
-```js
+```jsx
 <Link className='nav-link active' aria-current='page' to='/findmusic'>
     发现音乐
 </Link>
@@ -215,14 +215,14 @@ import { HashRouter, Route, Link } from 'react-router-dom'
 
 5. 使用 `Route` 指定路由规则。
 
-```js
+```jsx
 // 在哪里写的 Route，最终匹配到的组件就会渲染到哪里
 <Route path='/findmusic' component={FindMusic} />
 ```
 
 `App.js`，改造上面的案例。
 
-```js
+```jsx
 import { HashRouter, Link, Route } from 'react-router-dom'
 import FindMusic from './pages/FindMusic'
 import MyMusic from './pages/MyMusic'
@@ -290,7 +290,7 @@ export default function App() {
 
 -   BrowserRouter：使用 H5 的 history API 实现（`http://localhost:3000/first`），是通过监听 window 的 `popstate` 事件来实现的。
 
-```js
+```jsx
 // 使用时建议通过 as 起一个别名，方便修改
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 ```
@@ -333,7 +333,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 3. 发现音乐的 Link 组件的 to 属性对应的值改成了 `/`，同时出口 Route 组件的 path 属性也改成了 `/`，代码如下。
 
-```js
+```jsx
 import React from 'react'
 import { HashRouter, Route, NavLink } from 'react-router-dom'
 import Home from './pages/Home'
@@ -383,7 +383,7 @@ export default function App() {
 
 代码
 
-```js
+```jsx
 import { HashRouter, Route, Link, NavLink } from 'react-router-dom'
 import FindMusic from './pages/FindMusic'
 import MyMusic from './pages/MyMusic'
@@ -466,7 +466,7 @@ export default function App() {
 
 -   通过 `Switch` 组件配合不带 path 属性的 Route 组件能实现 404 效果，即便不需要实现 404，也可以用 Switch 包裹来提升性能。
 
-```js
+```jsx
 <Switch>
     <Route exact path='/' component={FindMusic} />
     <Route path='/mymusic' component={MyMusic} />
@@ -477,7 +477,7 @@ export default function App() {
 
 ## 路由重定向
 
-```js
+```jsx
 import { HashRouter, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom'
 import FindMusic from './pages/FindMusic'
 import MyMusic from './pages/MyMusic'
@@ -559,7 +559,7 @@ export default function App() {
 
 `pages/FindMusic/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 
@@ -609,7 +609,7 @@ export default function FindMusic() {
 
 注意：配置嵌套路由的时候，必须要先匹配到父路由，才能匹配到子路由。
 
-```js
+```jsx
 import React from 'react'
 import { NavLink, Route, Switch, Redirect } from 'react-router-dom'
 import './index.scss'
@@ -661,7 +661,7 @@ export default function FindMusic() {
 
 -   第二种方式通过 react-router-dom 提供的 useHistory 勾子进行跳转。
 
-```js
+```jsx
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
@@ -687,7 +687,7 @@ export default function SongList(props) {
 
 1. 入口。
 
-```js
+```jsx
 <NavLink className='nav-link' to='/findmusic/ranking/bsb'>
     飙升榜
 </NavLink>
@@ -695,13 +695,13 @@ export default function SongList(props) {
 
 2. 出口。
 
-```js
+```jsx
 <Route path='/findmusic/ranking/:id' component={RankingList} />
 ```
 
 3. 获取。
 
-```js
+```jsx
 // props.match.params.id 或者通过 useParams()
 ```
 
@@ -709,7 +709,7 @@ export default function SongList(props) {
 
 `pages/Ranking/index.js`
 
-```js
+```jsx
 import React from 'react'
 
 export default function Ranking(props) {
@@ -769,7 +769,7 @@ export default function Ranking(props) {
 
 `pages/RankingList/index.js`
 
-```js
+```jsx
 import { useParams } from 'react-router-dom'
 
 export default function RankingList(props) {
@@ -787,7 +787,7 @@ export default function RankingList(props) {
 
 1. 入口。
 
-```js
+```jsx
 <NavLink className='nav-link' to='/findmusic/ranking/?id=bsb'>
     飙升榜
 </NavLink>
@@ -795,13 +795,13 @@ export default function RankingList(props) {
 
 2. 出口。
 
-```js
+```jsx
 <Route path='/findmusic/ranking' component={RankingList} />
 ```
 
 3. 获取。
 
-```js
+```jsx
 import qs from 'qs'
 export default function RankingList(props) {
     const { id } = qs.parse(props.location.search.slice(1))
@@ -817,7 +817,7 @@ export default function RankingList(props) {
 
 `src/pages/Ranking/index.js`
 
-```js
+```jsx
 import { NavLink, Route, Switch } from 'react-router-dom'
 import RankingList from '../RankingList'
 

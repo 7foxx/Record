@@ -124,7 +124,7 @@ useEffect 清理函数的执行时机是什么？
 
 `App.js`
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 import avatar from './images/avatar.png'
 
@@ -196,7 +196,7 @@ export const useMouse = () => {
 
 App.js
 
-```js
+```jsx
 import React from 'react'
 import avatar from './images/avatar.png'
 import { useMouse } from './hooks'
@@ -212,7 +212,7 @@ export default function App() {
 
 ### 封装记录滚动位置的 Hook
 
-```js
+```jsx
 export const useScroll = () => {
     const [scroll, setScroll] = useState({
         scrollLeft: 0,
@@ -266,7 +266,7 @@ useEffect(async () => {
 
 正确使用
 
-```js
+```jsx
 useEffect(() => {
     async function fetchMyAPI() {
         let url = 'http://something/' + productId
@@ -338,7 +338,7 @@ useEffect 的回调函数不能是异步的，那么如何使用 async/await 语
 
 1. 使用 useRef 创建一个有 current 属性的 ref 对象，`{ current: null }`。
 
-```js
+```jsx
 const xxxRef = useRef(null)
 ```
 
@@ -397,7 +397,7 @@ export default App
 
 `Test.js`
 
-```js
+```jsx
 import React, { Component } from 'react'
 
 export default class Test extends Component {
@@ -422,7 +422,7 @@ useRef 创建的引用可以实现多次渲染之间进行共享。
 
 ### 错误写法
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 
 export default function App() {
@@ -447,7 +447,7 @@ export default function App() {
 
 ### 全局变量
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 
 let timer
@@ -474,7 +474,7 @@ export default function App() {
 
 多个组件实例之间会共用一个全局变量，以至于会相互影响，可以通过以下代码验证。
 
-```js
+```jsx
 import React from 'react'
 
 let num = 0
@@ -492,7 +492,7 @@ export default function Test() {
 
 useRef：保证更新期间共用同一个 ref 对象（可以先理解为是一个全局变量）的同时，多个组件实例之间又不会相互影响（因为它是在组件内部的）。
 
-```js
+```jsx
 import React, { useState, useEffect, useRef } from 'react'
 
 export default function App() {
@@ -552,14 +552,14 @@ export default function App() {
 
 `countContext.js`
 
-```js
+```jsx
 import { createContext } from 'react'
 export const Context = createContext()
 ```
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 import { Context } from './countContext'
 import Parent from './Parent'
@@ -577,7 +577,7 @@ export default function App() {
 
 `Parent.js`
 
-```js
+```jsx
 import Child from './Child'
 export default function Parent() {
     return (
@@ -592,7 +592,7 @@ export default function Parent() {
 
 `Child.js`
 
-```js
+```jsx
 import { context } from './countContext'
 
 export default function Child() {
@@ -629,7 +629,7 @@ useRef 的使用步骤是什么？
 
 -   返回：`<Context.Provider/>` 提供的 value 数据。
 
-```js
+```jsx
 import { useContext } from 'react'
 import { Context } from './countContext'
 
@@ -747,7 +747,7 @@ import MyCount from '../MyCount'
 
 `App.js`
 
-```js
+```jsx
 export default function App() {
     const changeCount = (id, count) => {
         setList(
@@ -777,7 +777,7 @@ export default function App() {
 
 `components/GoodsItem/index.js`
 
-```js
+```jsx
 export default function GoodsItem({ goods_count, goods_img, goods_name, goods_price, goods_state, id, changeState, changeCount }) {
     return (
         <div className='my-goods-item'>
@@ -795,7 +795,7 @@ export default function GoodsItem({ goods_count, goods_img, goods_name, goods_pr
 
 `components/MyCount/index.js`
 
-```js
+```jsx
 export default function MyCount({ count, changeCount }) {
     const plus = () => {
         changeCount(count + 1)
@@ -888,7 +888,7 @@ export default function MyCount({ count, id }) {
 
 `components/MyCount/index.js`
 
-```js
+```jsx
 import React, { useContext } from 'react'
 import { Context } from '../../App'
 import './index.scss'

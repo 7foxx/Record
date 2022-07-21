@@ -134,7 +134,7 @@ yarn add redux
 
     c，可以通过 payload 携带额外的数据。
 
-```js
+```jsx
 { type： 'increment' }
 
 // payload: 参数
@@ -147,7 +147,7 @@ yarn add redux
 
 `store/actions.js`
 
-```js
+```jsx
 export const incremen = {
     type: 'INCREMENT',
     payload: 5,
@@ -179,7 +179,7 @@ export const decrement = {
 
 `store/actions.js`
 
-```js
+```jsx
 export const increment = (payload) => ({
     type: 'INCREMENT',
     payload,
@@ -250,25 +250,25 @@ export default function counter(state = 10, action) {
 
 -   为什么说纯函数呢？因为 reducer 要求自身就必须是一个纯函数。
 
-```js
+```jsx
 const add = (a, b) => a + b
 add(1, 2)
 ```
 
-```js
+```jsx
 const add = (a, b) => a + b + Math.random()
 add(1, 2)
 add(1, 2)
 ```
 
-```js
+```jsx
 const arr = [1, 2, 3, 4, 5]
 arr.slice(1, 2)
 arr.slice(1, 2)
 arr.slice(1, 2)
 ```
 
-```js
+```jsx
 const arr = [1, 2, 3, 4, 5]
 arr.splice(1, 2)
 arr.splice(1, 2)
@@ -302,7 +302,7 @@ arr.splice(1, 2)
 
 `store/index.js`，注意演示上面 API 需要先在 `index.js` 中引入此文件。
 
-```js
+```jsx
 // store: 整个数据的仓库，负责关联 reducer 和 action，通过 store 对象可以给 reducer 分配 action
 import { createStore } from 'redux'
 import reducer from './reducers'
@@ -326,7 +326,7 @@ export default store
 
 App.js
 
-```js
+```jsx
 import React from 'react'
 import store from './store'
 
@@ -341,7 +341,7 @@ export default function App() {
 
 ### 更改数据
 
-```js
+```jsx
 import React from 'react'
 import store from './store'
 import { increment, decrement } from './store/actions'
@@ -363,7 +363,7 @@ export default function App() {
 
 ### 解决问题
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import App from './App'
 import store from './store'
@@ -403,7 +403,7 @@ store 中数据的变化，通过哪个方法可以被观测到？如何让视�
 
 -   因此，将来当我们调用 `store.getState()` 方法来获取 Redux 状态值的时候，拿到的就是 10 了。
 
-```js
+```jsx
 import { createStore } from 'redux'
 import reducer from './reducer'
 // 只要创建 store 传递了 reducer，Redux 内部就会自动的 dispatch 一次 action
@@ -450,7 +450,7 @@ yarn add react-redux
 
 `index.js`
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import App from './App.js'
 import store from './store/store.js'
@@ -480,7 +480,7 @@ ReactDOM.render(
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
 const App = () => {
@@ -500,7 +500,7 @@ export default App
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement } from './store/actions'
@@ -524,7 +524,7 @@ export default App
 
 如果 Test 组件想用，看看有多方便吧，无需传值，直接拽过来！
 
-```js
+```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -574,7 +574,7 @@ export default function Test() {
 
 #### `reducers.js`
 
-```js
+```jsx
 import { combineReducers } from 'redux'
 
 function counter(state = 10, action) {
@@ -608,7 +608,7 @@ export default combineReducers({
 
 #### `App.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment, decrement } from './store/actions'
@@ -636,7 +636,7 @@ export default App
 
 #### `Test.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { increment } from './store/actions'
@@ -657,7 +657,7 @@ export default function Test() {
 
 #### `User.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateName } from './store/actions'
@@ -679,7 +679,7 @@ export default function User() {
 
 #### `actions.js`
 
-```js
+```jsx
 export const updateName = (payload) => ({
     type: 'UPDATENAME',
     payload,
@@ -718,7 +718,7 @@ export const updateName = (payload) => ({
 
 `actionTypes.js`
 
-```js
+```jsx
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 export const COUNTER_DECREMENT = 'COUNTER_DECREMENT'
 export const USER_UPDATENAME = 'USER_UPDATENAME'
@@ -726,7 +726,7 @@ export const USER_UPDATENAME = 'USER_UPDATENAME'
 
 `actions.js`
 
-```js
+```jsx
 import { COUNTER_INCREMENT, COUNTER_DECREMENT, USER_UPDATENAME } from './actionTypes'
 export const increment = (payload) => ({
     type: COUNTER_INCREMENT,
@@ -746,7 +746,7 @@ export const updateName = (payload) => ({
 
 `reducers.js`
 
-```js
+```jsx
 import { combineReducers } from 'redux'
 import { COUNTER_INCREMENT, COUNTER_DECREMENT, USER_UPDATENAME } from './actionTypes'
 
@@ -793,7 +793,7 @@ export default combineReducers({
 
 `App.js`，引入拆分后的组件
 
-```js
+```jsx
 import React from 'react'
 import TodoFooter from './components/TodoFooter'
 import TodoHeader from './components/TodoHeader'
@@ -815,7 +815,7 @@ export default function App() {
 
 `index.js`，引入相关的样式
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import './styles/base.css'
 import './styles/index.css'
@@ -844,7 +844,7 @@ ReactDOM.render(<App />, document.querySelector('#root'))
 
 1. `store/reducers/todo.js`
 
-```js
+```jsx
 export default function todo(state = [], action) {
     return state
 }
@@ -852,7 +852,7 @@ export default function todo(state = [], action) {
 
 2. `store/reducers/index.js`
 
-```js
+```jsx
 import { combineReducers } from 'redux'
 import todo from './todo'
 const rootReducer = combineReducers({
@@ -864,7 +864,7 @@ export default rootReducer
 
 3. `store/index.js`
 
-```js
+```jsx
 import { createStore } from 'redux'
 import reducer from './reducers'
 const store = createStore(reducer)
@@ -873,7 +873,7 @@ export default store
 
 4. 入口文件，`index.js`
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import './styles/base.css'
 import './styles/index.css'
@@ -903,7 +903,7 @@ ReactDOM.render(
 
 1. `store/reducers/todo.js`
 
-```js
+```jsx
 const initState = [
     {
         id: 1,
@@ -924,7 +924,7 @@ export default function todo(state = initState, action) {
 
 2. `components/TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -967,14 +967,14 @@ export default function TodoMain() {
 
 1. `store/constants/todo.js`
 
-```js
+```jsx
 export const TODO_DEL = 'TODO_DEL'
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 ```
 
 2. `store/actions/todo.js`
 
-```js
+```jsx
 import { TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 export const delTodo = (id) => ({
@@ -989,7 +989,7 @@ export const changeStatus = (id) => ({
 
 3. `store/reducers/todo.js`
 
-```js
+```jsx
 import { TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 const initState = [
@@ -1027,7 +1027,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeStatus, delTodo } from '../store/actions/todo'
@@ -1072,13 +1072,13 @@ export default function TodoMain() {
 
 1. `store/constants/todo.js`
 
-```js
+```jsx
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 ```
 
 2. `store/actions/todo.js`
 
-```js
+```jsx
 export const changeStatus = (id) => ({
     type: TODO_CHANGESTATUS,
     id,
@@ -1087,7 +1087,7 @@ export const changeStatus = (id) => ({
 
 3. `store/reducers/todo.js`
 
-```js
+```jsx
 export default function todo(state = initState, action) {
     if (action.type === TODO_DEL) {
         return state.filter((item) => item.id !== action.id)
@@ -1110,7 +1110,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeStatus, delTodo } from '../store/actions/todo'
@@ -1155,7 +1155,7 @@ export default function TodoMain() {
 
 1. `store/constants/todo.js`
 
-```js
+```jsx
 export const TODO_DEL = 'TODO_DEL'
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 export const TODO_ADD = 'TODO_ADD'
@@ -1163,7 +1163,7 @@ export const TODO_ADD = 'TODO_ADD'
 
 2. `store/actions/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 export const delTodo = (id) => ({
@@ -1183,7 +1183,7 @@ export const addTodo = (name) => ({
 
 3. `store/reducers/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 const initState = [
@@ -1229,7 +1229,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoHeader.js`
 
-```js
+```jsx
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addTodo } from '../store/actions/todo'
@@ -1269,7 +1269,7 @@ export default function TodoHeader() {
 
 1. `store/constants/todo.js`
 
-```js
+```jsx
 export const TODO_DEL = 'TODO_DEL'
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 export const TODO_ADD = 'TODO_ADD'
@@ -1278,7 +1278,7 @@ export const TODO_CHANGEALL = 'TODO_CHANGEALL'
 
 2. `store/actions/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGEALL, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 export const delTodo = (id) => ({
@@ -1302,7 +1302,7 @@ export const changeAll = (done) => ({
 
 3. `store/reducers/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGEALL, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 const initState = [
@@ -1356,7 +1356,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeAll, changeStatus, delTodo } from '../store/actions/todo'
@@ -1400,7 +1400,7 @@ export default function TodoMain() {
 
 `components/TodoMain.js`
 
-```js
+```jsx
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import classNames from 'classnames'
@@ -1455,7 +1455,7 @@ export default function TodoMain() {
 
 1. `TodoItem.js`
 
-```js
+```jsx
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
@@ -1492,7 +1492,7 @@ export default function TodoItem({ item }) {
 
 2. `TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeAll } from '../store/actions/todo'
@@ -1528,7 +1528,7 @@ export default function TodoMain() {
 
 `components/TodoItem.js`
 
-```js
+```jsx
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
@@ -1583,7 +1583,7 @@ export default function TodoItem({ item }) {
 
 1. `store/constants/todo.js`
 
-```js
+```jsx
 export const TODO_DEL = 'TODO_DEL'
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 export const TODO_ADD = 'TODO_ADD'
@@ -1593,7 +1593,7 @@ export const TODO_CHANGENAME = 'TODO_CHANGENAME'
 
 2. `store/actions/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGEALL, TODO_CHANGENAME, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 export const delTodo = (id) => ({
@@ -1622,7 +1622,7 @@ export const changeName = (id, name) => ({
 
 3. `store/reducers/todo.js`
 
-```js
+```jsx
 import { TODO_CHANGENAME, TODO_ADD, TODO_CHANGEALL, TODO_CHANGESTATUS, TODO_DEL } from '../constants/todo'
 
 const initState = [
@@ -1688,7 +1688,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoItem.js`
 
-```js
+```jsx
 import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
@@ -1740,7 +1740,7 @@ export default function TodoItem({ item }) {
 
 1. `constants/todo.js`
 
-```js
+```jsx
 export const TODO_DEL = 'TODO_DEL'
 export const TODO_CHANGESTATUS = 'TODO_CHANGESTATUS'
 export const TODO_ADD = 'TODO_ADD'
@@ -1751,7 +1751,7 @@ export const TODO_CLEARDONED = 'TODO_CLEARDONED'
 
 2. `actions/todo.js`
 
-```js
+```jsx
 import { TODO_ADD, TODO_CHANGEALL, TODO_CHANGENAME, TODO_CHANGESTATUS, TODO_CLEARDONED, TODO_DEL } from '../constants/todo'
 
 export const delTodo = (id) => ({
@@ -1783,7 +1783,7 @@ export const clearTodo = () => ({
 
 3. `reducers/todo.js`
 
-```js
+```jsx
 import { TODO_CHANGENAME, TODO_ADD, TODO_CHANGEALL, TODO_CHANGESTATUS, TODO_DEL, TODO_CLEARDONED } from '../constants/todo'
 
 const initState = [
@@ -1853,7 +1853,7 @@ export default function todo(state = initState, action) {
 
 4. `components/TodoFooter.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearTodo } from '../store/actions/todo'
@@ -1892,7 +1892,7 @@ export default function TodoFooter() {
 
 `components/TodoFooter.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -1941,13 +1941,13 @@ export default function TodoFooter() {
 
 1. `constants/filter.js`
 
-```js
+```jsx
 export const FILTER_SELECTED = 'FILTER_SELECTED'
 ```
 
 2. `actions/filter.js`
 
-```js
+```jsx
 import { FILTER_SELECTED } from '../constants/filter'
 
 export const changeFilter = (filter) => ({
@@ -1958,7 +1958,7 @@ export const changeFilter = (filter) => ({
 
 3. `reducers/filter.js`
 
-```js
+```jsx
 import { FILTER_SELECTED } from '../constants/filter'
 
 export default function filter(state = 'all', action) {
@@ -1971,7 +1971,7 @@ export default function filter(state = 'all', action) {
 
 4. `reducers/index.js`
 
-```js
+```jsx
 import { combineReducers } from 'redux'
 import todo from './todo'
 import filter from './filter'
@@ -1985,7 +1985,7 @@ export default rootReducer
 
 5. `components/TodoFooter.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { clearTodo } from '../store/actions/todo'
@@ -2023,7 +2023,7 @@ export default function TodoFooter() {
 
 `components/TodoMain.js`
 
-```js
+```jsx
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeAll } from '../store/actions/todo'
@@ -2109,7 +2109,7 @@ export default function TodoMain() {
 
 `store/index.js`
 
-```js
+```jsx
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import rootReducer from './reducers'
@@ -2132,7 +2132,7 @@ export default createStore(rootReducer, applyMiddleware(logger))
 
 `store/index.js`
 
-```js
+```jsx
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import rootReducer from './reducers'
@@ -2141,7 +2141,7 @@ export default createStore(rootReducer, applyMiddleware(thunk, logger))
 
 `store/actions/todo.js`
 
-```js
+```jsx
 export const clearTodo = () => {
     return (dispatch) => {
         setTimeout(() => {

@@ -167,7 +167,7 @@ const jsx = (
 
 `src/index.js`
 
-```js
+```jsx
 // create-react-app 脚手架生成的项目中已经下载好了 react 和 react-dom，无需重复下载，直接使用即可
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -175,14 +175,14 @@ import ReactDOM from 'react-dom'
 
 5. 调用 `React.createElement()` 方法创建 React 元素。
 
-```js
+```jsx
 // 标签名、标签属性、标签内容，返回的是一个 React 元素（虚拟 DOM）
 const title = React.createElement('h1', null, 'Hello World')
 ```
 
 6. 调用 `ReactDOM.render()` 方法渲染 React 元素到页面。
 
-```js
+```jsx
 ReactDOM.render(title, document.querySelector('#root'))
 ```
 
@@ -208,7 +208,7 @@ ReactDOM.render(title, document.querySelector('#root'))
 
 ### 要点
 
-```js
+```jsx
 React.createElement('标签名', { 标签上的属性1：值1 }, 子元素1, 子元素2)
 ```
 
@@ -256,13 +256,13 @@ JSX 是 JavaScript XML 的简写，表示可以在 JavaScript 代码中写 XML�
 
 1. 使用 JSX 创建 React 元素
 
-```js
+```jsx
 const title = <h1>Hello JSX</h1>
 ```
 
 2. 使用 `ReactDOM.render()` 方法渲染 React 元素到页面中
 
-```js
+```jsx
 ReactDOM.render(title, document.querySelector('#root'))
 ```
 
@@ -428,7 +428,7 @@ const loadData = () => {
 
 -   后端返回的数据。
 
-```js
+```jsx
 const arr = [
     { id: 1, name: 'Vue' },
     { id: 2, name: 'React' },
@@ -496,7 +496,7 @@ ReactDOM.render(loadData(), document.querySelector('#root'))
 
 ### 内容
 
-```js
+```jsx
 const list = [
     { id: 1, name: '武汉黑马前端64期', salary: 11000 },
     { id: 2, name: '武汉黑马前端66期', salary: 13000 },
@@ -957,7 +957,7 @@ import './index.css'
 
 解决 className 和图片失效的问题。
 
-```js
+```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
@@ -1055,7 +1055,7 @@ ReactDOM.render(content, document.querySelector('#root'))
 
 #### 渲染评论数量和 Tab 栏
 
-```js
+```jsx
 const state = {
     // hot: 热度排序  time: 时间排序
     tabs: [

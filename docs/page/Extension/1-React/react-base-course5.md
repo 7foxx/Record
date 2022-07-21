@@ -57,7 +57,7 @@
 
     c，同一业务的状态和业务逻辑被拆分到不同位置。
 
-```js
+```jsx
 {
     state = {
         count: 0
@@ -278,7 +278,7 @@ export default App
 
 -   `useState(回调函数)`，回调函数的返回值就是状态的初始值，<font color=e32d40>**该回调函数只会触发一次**</font>。
 
-```js
+```jsx
 useState(() => {
     return 初始值
 })
@@ -294,7 +294,7 @@ useState(() => {
 
 📝 需求：对下面的代码进行性能优化。
 
-```js
+```jsx
 import React, { useState } from 'react'
 
 export default function App() {
@@ -338,7 +338,7 @@ export default function App() {
 
     c，可以通过开发者工具进行查看 React 对 Hook 的管理。
 
-```js
+```jsx
 import React, { useState } from 'react'
 
 export default function App() {
@@ -406,7 +406,7 @@ export default function App() {
 
 -   相当于 class 中的 componentDidMount + componentDidUpdate。
 
-```js
+```jsx
 useEffect(() => {})
 ```
 
@@ -492,7 +492,7 @@ export default App
 
 ### 解决
 
-```js
+```jsx
 useEffect(() => {
     console.log('执行了 useEffect ~~~')
     document.title = count
@@ -517,7 +517,7 @@ useEffect 的第二个参数，还可以是一个空数组（[]），表示只�
 
 ### 代码
 
-```js
+```jsx
 useEffect(() => {
     const handleResize = () => {}
     window.addEventListener('resize', handleResize)
@@ -550,7 +550,7 @@ useEffect 的第二个参数是一个空数组，相当于 class 组件中的那
 
 -   所以，不要对 useEffect 的依赖撒谎，[参考 useEffect 完全指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)。
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 
 const App = () => {
@@ -597,7 +597,7 @@ useEffect(() => {}, [count])
 
 先点击按钮开启定时器，再点击 +8 按钮，10s 后输出的结果是什么？
 
-```js
+```jsx
 import React, { useState } from 'react'
 
 export default function App() {
@@ -624,7 +624,7 @@ export default function App() {
 
 ### 有问题的代码
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 
 export default function App() {
@@ -646,7 +646,7 @@ export default function App() {
 
 <span style="position:relative;top:-3px;">✍</span> setCount 的参数参数可以是一个回调函数，回调函数的参数表示上一次的状态。
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 
 export default function App() {
@@ -694,7 +694,7 @@ yarn add bootstrap@4.5.0
 
 3. 入口文件中引入 bootstrap。
 
-```js
+```jsx
 import 'bootstrap/dist/css/bootstrap.css'
 ```
 
@@ -731,7 +731,7 @@ export default function App() {
 
 `components/MyHeader/index.js`
 
-```js
+```jsx
 import './index.scss'
 
 export default function MyHeader() {
@@ -778,7 +778,7 @@ export default function MyHeader({ children = '标题' }) {
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 import MyHeader from './components/MyHeader'
 
@@ -809,7 +809,7 @@ export default function App() {
 
 `components/MyFooter/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function MyFooter() {
@@ -866,7 +866,7 @@ export default function MyFooter() {
 
 `App.js`
 
-```js
+```jsx
 import React from 'react'
 import MyHeader from './components/MyHeader'
 import MyFooter from './components/MyFooter'
@@ -899,7 +899,7 @@ export default function App() {
 
 `components/GoodsItem/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function GoodsItem() {
@@ -983,7 +983,7 @@ export default function App() {
 
 解决样式问题，`App.js`
 
-```js
+```jsx
 import React from 'react'
 import MyHeader from './components/MyHeader'
 import MyFooter from './components/MyFooter'
@@ -1026,7 +1026,7 @@ export default function App() {
 
 `App.js` 中提供数据。
 
-```js
+```jsx
 // 建议放到函数外面即可
 const arr = [
     {
@@ -1112,14 +1112,14 @@ const arr = [
 ]
 ```
 
-```js
+```jsx
 // 放到函数内部
 const [list, setList] = useState(arr)
 ```
 
 `App.js` 中根据数据渲染组件
 
-```js
+```jsx
 {
     list.map((item) => <GoodsItem key={item.id} {...item}></GoodsItem>)
 }
@@ -1171,7 +1171,7 @@ export default function GoodsItem({ goods_count, goods_img, goods_name, goods_pr
 
 `App.js`
 
-```js
+```jsx
 export default function App() {
     const [list, setList] = useState(arr)
     const changeState = (id) => {
@@ -1202,7 +1202,7 @@ export default function App() {
 
 `GoodsItem/index.js`
 
-```js
+```jsx
 <input type='checkbox' className='custom-control-input' checked={goods_state} id={id} onChange={() => changeState(id)} />
 ```
 
@@ -1218,13 +1218,13 @@ export default function App() {
 
 `App.js`
 
-```js
+```jsx
 <MyFooter list={list} />
 ```
 
 `components/MyFooter/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function MyFooter({ list }) {
@@ -1277,7 +1277,7 @@ export default function MyFooter({ list }) {
 
 `components/MyFooter/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function MyFooter({ list }) {
@@ -1318,7 +1318,7 @@ export default function MyFooter({ list }) {
 
 `components/MyFooter/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function MyFooter({ list, changeAll }) {
@@ -1357,7 +1357,7 @@ export default function MyFooter({ list, changeAll }) {
 
 `App.js`
 
-```js
+```jsx
 export default function App() {
     const changeAll = (value) => {
         setList(
@@ -1386,7 +1386,7 @@ export default function App() {
 
 `App.js`
 
-```js
+```jsx
 export default function App() {
     // #1
     const [list, setList] = useState(() => {
@@ -1403,7 +1403,7 @@ export default function App() {
 
 #### `index.js`
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -1413,7 +1413,7 @@ ReactDOM.render(<App />, document.querySelector('#root'))
 
 #### `App.js`
 
-```js
+```jsx
 import React, { useState, useEffect } from 'react'
 import MyHeader from './components/MyHeader'
 import MyFooter from './components/MyFooter'
@@ -1555,7 +1555,7 @@ export default function App() {
 
 #### `MyHeader/index.js`
 
-```js
+```jsx
 import './index.scss'
 
 export default function MyHeader({ children = '标题' }) {
@@ -1582,7 +1582,7 @@ export default function MyHeader({ children = '标题' }) {
 
 #### `GoodsItem/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function GoodsItem({ goods_count, goods_img, goods_name, goods_price, goods_state, id, changeState }) {
@@ -1647,7 +1647,7 @@ export default function GoodsItem({ goods_count, goods_img, goods_name, goods_pr
 
 #### `MyFooter/index.js`
 
-```js
+```jsx
 import React from 'react'
 import './index.scss'
 export default function MyFooter({ list, changeAll }) {

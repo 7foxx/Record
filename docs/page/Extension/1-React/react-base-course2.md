@@ -183,7 +183,7 @@ export default class App extends Component {
 
 `index.js`
 
-```js
+```jsx
 import ReactDOM from 'react-dom'
 import App from './App'
 
@@ -538,7 +538,7 @@ class App extends Component {
 
 原型方法演示
 
-```js
+```jsx
 class App {
     handleClick() {}
 }
@@ -553,7 +553,7 @@ console.log(app1.handleClick === app2.handleClick)
 
 实例方法演示
 
-```js
+```jsx
 class App {
     handleClick = () => {}
 }
@@ -1432,7 +1432,7 @@ class App extends React.Component {
 
 1. 通过受控组件的方式获取到评论内容。
 
-```js
+```jsx
 state = {
     content: '',
 }
@@ -1452,7 +1452,7 @@ handleChange = (e) => {
 
 2. 点击发表按钮在事件回调里面通过 setState 添加评论并重置输入的内容。
 
-```js
+```jsx
 addItem = () => {
     const newComment = {
         id: Date.now(),
@@ -2054,7 +2054,7 @@ export default class App extends React.Component {
 
 a，利用 `findIndex` 并 `splice`
 
-```js
+```jsx
 handleDel = (id) => {
     // 不建议在原 state 的基础上直接进行操作，后续做性能优化时会有影响
     const comments = [...this.state.comments]
@@ -2068,7 +2068,7 @@ handleDel = (id) => {
 
 b，利用 `findIndex` 并 `slice`
 
-```js
+```jsx
 handleDel = (id) => {
     const idx = this.state.comments.findIndex((item) => item.id === id)
     this.setState({
@@ -2079,7 +2079,7 @@ handleDel = (id) => {
 
 c，利用 `filter`
 
-```js
+```jsx
 handleDel = (id) => {
     this.setState({
         comments: this.state.comments.filter((item) => item.id !== id),

@@ -133,7 +133,7 @@ export default Test
 
 4. 特定结构的对象：shape({})。
 
-```js
+```jsx
 {
     // 常见类型
     fn1: PropTypes.func,
@@ -366,7 +366,7 @@ export default Test
 
 -   多次调用 setState()，只会触发一次重新渲染，所以无需担心多次进行 `setState` 会带来性能问题。
 
-```js
+```jsx
 // 初始
 state = { count: 1 }
 
@@ -381,7 +381,7 @@ console.log(this.state.count) // 1
 
 解释合并
 
-```js
+```jsx
 this.setState({
     count: this.state.count + 1,
 })
@@ -401,7 +401,7 @@ this.setState({
 
 `App.js`
 
-```js
+```jsx
 import React, { Component } from 'react'
 
 export default class App extends Component {
@@ -424,7 +424,7 @@ export default class App extends Component {
 
 原生事件
 
-```js
+```jsx
 import React, { Component, createRef } from 'react'
 
 export default class App extends Component {
@@ -453,7 +453,7 @@ export default class App extends Component {
 
 另一种同步的表现写法，了解即可！
 
-```js
+```jsx
 import React, { Component } from 'react'
 
 export default class App extends Component {

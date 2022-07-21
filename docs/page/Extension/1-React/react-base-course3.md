@@ -842,7 +842,7 @@ export default class B extends Component {
 
 ### 另一种获取数据的方式
 
-```js
+```jsx
 import React, { Component } from 'react'
 import { Context } from '../../context'
 
@@ -860,7 +860,7 @@ export default class B extends Component {
 
 注意默认值生效的条件：并不是不传递 value，而是没有找到包裹 Context.Provider 的祖先元素
 
-```js
+```jsx
 import React from 'react'
 export const Context = React.createContext({
     age: 88,
@@ -1434,7 +1434,7 @@ export default class List extends Component {
 
 4. Tabs 组件内根据传递过来的 active 和循环时候的 item.type 进行比较，如果一致就使用 on class。
 
-```js
+```jsx
 export default class App extends Component {
     state = {
         tabs: [
@@ -1681,7 +1681,7 @@ export default class List extends Component {
 
 2. 输出的时候可以通过 dayjs 进行格式化。
 
-```js
+```jsx
 import dayjs from 'dayjs'
 // item.time 是一个日期对象
 dayjs(item.time).format('YYYY-MM-DD HH:mm:ss')
