@@ -21,7 +21,7 @@
 
 在本地仓库执行`git remote -v`，可以查看当前本地仓库与远程仓库的关联信息，如下图所示：
 
-![img](https://picgo-1302703244.cos.ap-nanjing.myqcloud.com/202206201054266.png)
+![img](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202206201054266.png)
 
 可以看到当前项目与远程名为origin的GitHub仓库相关联（两条信息）。
 

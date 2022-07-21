@@ -1,6 +1,6 @@
 # 在 `tsx` 文件中写 `jsx` 语法类型检测会不通过
 
-![image-20220618173422200](https://picgo-1302703244.cos.ap-nanjing.myqcloud.com/202206201015367.png)
+![image-20220618173422200](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202206201015367.png)
 
 **原因：**
 

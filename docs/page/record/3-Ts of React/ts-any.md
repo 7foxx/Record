@@ -1,6 +1,6 @@
 # ts报错元素隐式具有 “any“ 类型
 
-![image-20220720085943742](https://picgo-1302703244.cos.ap-nanjing.myqcloud.com/202207200859822.png)
+![image-20220720085943742](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207200859822.png)
 
 ## 方案一，修改tsconfig
 
@@ -68,4 +68,4 @@ const accessDict: Record<string, boolean> = {
 
 ## 方案四：ts注解 @ts-ignore
 
-![image-20220720090545545](https://picgo-1302703244.cos.ap-nanjing.myqcloud.com/202207200905569.png)
+![image-20220720090545545](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207200905569.png)
