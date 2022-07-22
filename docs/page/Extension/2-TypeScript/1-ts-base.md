@@ -69,7 +69,7 @@ num.toFixed(2) // Uncaught TypeError: num.toFixed is not a function
 
 ### 内容
 
-1. <font color=e32d40>**更早（写代码的同时）发现错误**</font>，减少找 Bug、改 Bug 时间，提升开发效率。
+1. **<font color=e32d40>更早（写代码的同时）发现错误</font>**，减少找 Bug、改 Bug 时间，提升开发效率。
 
 2. 程序中任何位置的代码都有<font color=e32d40>**代码提示**</font>，随时随地的安全感，增强了开发体验。
 
