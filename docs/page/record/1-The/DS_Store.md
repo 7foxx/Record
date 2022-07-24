@@ -23,3 +23,9 @@ defaults delete com.apple.desktopservices DSDontWriteNetworkStores
 sudo find / -name ".DS_Store" -depth -exec rm {} \;
 ```
 
+4，删除当前文件下的
+
+```bash
+find . -name '.DS_Store' -type f -delete
+```
+
