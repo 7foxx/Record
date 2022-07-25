@@ -26,12 +26,15 @@ export default defineUserConfig({
     ],
     sidebar,
     // sidebarDepth:3,
+    // editLinks 控制仓库编辑
+    // @ts-ignore
+    editLinks:false,
     // https://vuepress.vuejs.org/zh/theme/default-theme-config.html#git-%E4%BB%93%E5%BA%93%E5%92%8C%E7%BC%96%E8%BE%91%E9%93%BE%E6%8E%A5
-    repo: 'https://github.com/7foxx/Record',
+    // repo: 'https://github.com/7foxx/Record',
     // 假如文档不是放在仓库的根目录下：
-    docsDir: 'docs',
+    // docsDir: 'docs',
     // 默认为 "Edit this page"
-    editLinkText: '在 GitHub 上编辑此页'
+    // editLinkText: '在 GitHub 上编辑此页'
   }),
   plugins: [
     // 代码复制

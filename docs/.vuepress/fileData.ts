@@ -55,9 +55,22 @@ export default (function getJsonFiles() {
     if (typeof values === 'object') {
       values.map(path => {
         if (typeof path === 'string') {
+          // 第一次排序
+          item[key] = item[key].sort((a, b) => {
+            a = typeof a === 'string' ? a : Object.keys(a)[0]
+            b = typeof b === 'string' ? b : Object.keys(b)[0]
+            const Arr = a.split('\\').filter(FItem => FItem)
+            const Astr = +Arr[Arr.length - 1].split('-')[0]
+            const Brr = b.split('\\').filter(FItem => FItem)
+            const Bstr = +Brr[Brr.length - 1].split('-')[0]
+            if (Bstr && Astr && Astr < Bstr) {
+              return -1
+            }
+            return 1
+          })
           const files = fs.readdirSync(pathDir.resolve(__dirname, `../${path}`))
           const index = values.findIndex(i => i === path)
-          item[key].some(e => {
+          item[key].map(e => {
             if (e === path && typeof e === 'string') {
               const ARR = files
                 .map(v => {
@@ -66,19 +79,19 @@ export default (function getJsonFiles() {
                   }
                 })
                 .filter(v => v)
-              
+
               // 排序
               const children = ARR.sort((a, b) => {
                 const Arr = a.split('/').filter(FItem => FItem)
                 const Astr = +Arr[Arr.length - 1].split('-')[0]
                 const Brr = b.split('/').filter(FItem => FItem)
                 const Bstr = +Brr[Brr.length - 1].split('-')[0]
-                if(Bstr && Astr && Astr < Bstr){
-                    return -1
+                if (Bstr && Astr && Astr < Bstr) {
+                  return -1
                 }
                 return 1
               })
-              
+
               // 将README文件放在第一个
               const value = children.find(e => /README/g.test(e))
               if (value) {
