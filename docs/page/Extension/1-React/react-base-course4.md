@@ -580,52 +580,6 @@ export default class App extends Component {
 
 数据更新后，想依赖更新后的数据做一些操作，把处理逻辑写在哪里？
 
-## B 站评论列表
-
-### 目标
-
-对留言数据进行持久化。
-
-### 步骤
-
-1. 每次数据更新完毕存储到本地。
-
-2. 组件挂载完成从本地获取数据，通过 setState 进行更新。
-
-### 代码
-
-```jsx
-export default class App extends Component {
-    // 更新的时候存储到本地
-    componentDidUpdate() {
-        localStorage.setItem('list', JSON.stringify(this.state.list))
-    }
-    // 挂载完成从本地获取，并设置到 state 中
-    componentDidMount() {
-        const list = JSON.parse(localStorage.getItem('list')) || []
-        this.setState({ list })
-    }
-    render() {
-        const { tabs, active, list } = this.state
-        return (
-            <div className='App'>
-                <div className='comment-container'>
-                    <div className='comment-head'>
-                        <span>1 评论</span>
-                    </div>
-                    {/* tabs */}
-                    <Tabs tabs={tabs} active={active} changeTab={this.changeTab} />
-                    {/* form */}
-                    <Form addComment={this.addComment} />
-                    {/* list */}
-                    <List list={list} active={active} delComment={this.delComment} changeAttitude={this.changeAttitude} />
-                </div>
-            </div>
-        )
-    }
-}
-```
-
 ## TODOLIST
 
 ### 案例目标

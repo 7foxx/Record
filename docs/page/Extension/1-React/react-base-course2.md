@@ -1235,7 +1235,7 @@ export default class App extends Component {
 
 完成带交互的 B 站评论列表案例。
 
-<img src="/resource/images/ifer_list3.png"/>
+![ifer_list3](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202207202139728.png)
 
 ### 整合数据和视图
 
