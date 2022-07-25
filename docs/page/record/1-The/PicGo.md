@@ -1,11 +1,59 @@
-# Typora+PicGo+腾讯云COS搭建图床
-## 阿里云OSS的设置详解
+# Typora+PicGo+搭建图床
+## 阿里云OSS
+### 1.设定KeyId和设定KeySecret
 
-<https://zhuanlan.zhihu.com/p/512657488>
+在AccessKey管理这里进去后可以创建账户，并查看对应的KeyId和KeySecret
+![1](https://pic1.zhimg.com/80/v2-45076c9146b83f61ebe3b92a5b878220_720w.jpg)
 
-## 1.下载Typora和PicGo
+### 2.设定存储空间名
+- 存储类型建议选择【标准存储】，选择【低频访问存储】的话，虽然存储费用可以降低，但数据取回费用相对较高。
 
-### 1.1 下载Typora
+- 读写权限选择【公共读】，如果选择【私有】，PicGo仍然可以上传，但在PicGo中不能预览，用起来不方便。
+
+![](https://pic2.zhimg.com/80/v2-73b2503dc8f503e5d88cd321dfdeb82d_720w.jpg)
+
+### 3.确认存储区域
+获取途径参考下图，注意后缀的.http://aliyun.com不需要（PicGo会自动添加）
+
+![](https://pic3.zhimg.com/80/v2-027c3d8d447fb69ce7b21d7fdfd304e2_720w.jpg)
+
+### 4.指定存储路径
+
+指定存储路径可根据实际情况设置
+
+![](https://pic3.zhimg.com/80/v2-ccec4b013b6a644e03d1adf24aeb0e3e_720w.jpg)
+
+### 5.设定网址后缀
+
+可以为空，也可以根据已经在OSS中事先设置好的文件样式（比如说水印样式）来设置，格式为 `?x-oss-process=style/[stylename]`。比如说，在OSS中事先设置了如下的一个样式，如下图所示，其效果是在图片右上角显示一个水印符号。
+
+![](https://pic2.zhimg.com/80/v2-0f681b1b7a60be74cbfeb4126487b099_720w.jpg)
+
+如果需要这样的样式，那么我们可以在PicGo的【设定网址后缀】这里设置为：?x-oss-process=style/quant.show，
+
+![](https://pic3.zhimg.com/80/v2-3dd2dbe0595f081aa141a43e0be0ded2_720w.jpg)
+
+这样设置后，上传图片不影响，改变的是在PicGo的相册里，显示的图片会自动加上该样式的水印，供用户使用。那么用户是否可以使用加水印前的图片呢？答案是可以的。虽然在PicGo相册中可能没有显示，但是可以手动地删除图片地址的?x-oss-process=style/quant.show部分，就可以访问到原图了。
+
+不过，如果没有大量使用有样式的图片的需求的话，建议【设定网址后缀】这里还是设置为空，在Wiki、博客等写在过程如果偶尔有使用样式的需求，可以通过在PicGo的链接后缀后手动地添加样式。
+
+### 6.设定自定义域名
+
+自定义域名的设置和是否能成功上传无关，即便设置错误，仍然可以正常上传至OSS。但是，如果设置错误，在PicGo相册中一是不能正常显示，二是其链接无效。
+
+![](https://pic4.zhimg.com/80/v2-962ea46eb84107474cacea68505b0017_720w.jpg)
+
+### 7.OSS的数据安全设置
+
+为了既保证上传的数据安全，又不影响PicGo的正常使用，在OSS的【基础设置】——【服务器加密】中，设置【OSS完全托管】，会使用OSS完全托管的密钥加密每个Object。目前是免费的。
+
+![](https://pic3.zhimg.com/80/v2-ed609e475fb1b06488fefe5b7d867466_720w.jpg)
+
+## 腾讯云OSS
+
+### 1.下载Typora和PicGo
+
+#### 1.1 下载Typora
 
 Typora从1.0.0版本以后开始收费了，功能更加齐全稳定，如果有更多的需求，还是建议购买，不过测试版的功能已经满足了用户大部分的需求了，如果需要最后一个免费使用的版本，可以点击[网盘链接](https://pan.baidu.com/s/1eesTkZ0TWtoIPbUcyvGPfw?pwd=fr4c)进行下载（提取码: fr4c），也可以从官网中找到所有的老版本，然后下载Old Beta 0.11.18版，只要以后不更新即可白嫖
 
@@ -13,7 +61,7 @@ Typora[官网下载链接](https://typora.io/)
 
 安装过程就是一直下一步，更改文件下载路径即可
 
-### 1.2 下载PicGo
+#### 1.2 下载PicGo
 
 进入[PicGo官网](https://molunerfinn.com/PicGo/)，点击免费下载即可进入到PicGo在Github上的项目[下载地址](https://github.com/Molunerfinn/picgo/releases)
 
@@ -29,7 +77,7 @@ Mac 用户下载 `.dmg`
 
 安装同样很简单，这里就在赘述
 
-## 2.设置Typora
+### 2.设置Typora
 
 首先，打开刚刚下载的Markdown编辑器Typora，点击`文件`>`偏好设置`>`图像`
 
@@ -37,7 +85,7 @@ Mac 用户下载 `.dmg`
 
 ![26a9412fc2956037693d7531ed560da4](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202206201021598.png)
 
-## 3.开通配置腾讯云对象存储
+### 3.开通配置腾讯云对象存储
 
 进入[腾讯云官网](https://cloud.tencent.com/)，注册登录腾讯云账号，如还未进行实名认证，需要先实名认证
 
@@ -109,7 +157,7 @@ Mac 用户下载 `.dmg`
 
 
 
-## 4.设置PicGo
+### 4.设置PicGo
 
 打开PicGo，点击PicGo设置，根据个人需要进行一些简单设置，也可以和我设置一样
 
@@ -125,7 +173,7 @@ Mac 用户下载 `.dmg`
 
 ![bcc207be1f9c9cc6db169c4ad6039303](https://picgo-any.oss-cn-shanghai.aliyuncs.com/img/202206201030502.png)
 
-## 5.验证是否成功
+### 5.验证是否成功
 
 在Typora中，仍是`偏好设置`>`图像`，点击验证图片上传
 
@@ -141,7 +189,7 @@ Mac 用户下载 `.dmg`
 
 注：这种方式搭建的图床有一个弊端：如果我们在PicGo中删除一张不需要的图片后，对象存储中对应的这张图片不会同步删除，而是需要我们去到对象存储控制台手动删除才行
 
-## 6.Gitee/Github图床文件转移
+### 6.Gitee/Github图床文件转移
 
 **注：如果之前并没未使用过Gitee/Github作为图床可忽略**
 
